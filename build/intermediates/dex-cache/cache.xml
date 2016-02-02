@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\AndroidDeskClock\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\libs\internal_impl-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\AndroidDeskClock\build\intermediates\pre-dexed\debug\internal_impl-23.0.1-f365f8dbf3100aaed35b978fedbc3f354db6bcfa.jar" />
+    </item>
+    <item
+        jar="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\AndroidDeskClock\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\AndroidDeskClock\build\intermediates\pre-dexed\debug\classes-64a2c32bcc565f2d13cb647ff3738781cf14b2ab.jar" />
+    </item>
+    <item
+        jar="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\AndroidDeskClock\build\intermediates\exploded-aar\com.android.support\support-v13\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8c046c952177602c858ed41c8fc492c939bde9aa">
+        <dex dex="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\AndroidDeskClock\build\intermediates\pre-dexed\debug\classes-69b685af6f706653ac46675f88d8ae14e78b7a99.jar" />
+    </item>
+    <item
+        jar="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\PlainViews\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="4356e230a981d1bbf047d848b91bc0d9b7c5bacc">
+        <dex dex="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\PlainViews\build\intermediates\pre-dexed\debug\classes-017b1ad81fdb367127d62692ac3e4498108c0f00.jar" />
+    </item>
+    <item
+        jar="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\AndroidDeskClock\build\intermediates\exploded-aar\com.android\datetimepicker\1.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="03725de1fbe58df0ff12fa4cc9b6ba095a9c5963">
+        <dex dex="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\AndroidDeskClock\build\intermediates\pre-dexed\debug\classes-0792b8287b01588a70fb5f20285011d9b5a4ed74.jar" />
+    </item>
+    <item
+        jar="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\PlainViews\build\intermediates\exploded-aar\com.android.support\design\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="e5c61a3169221a89654ffcaaed47bba51cf071ad">
+        <dex dex="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\PlainViews\build\intermediates\pre-dexed\debug\classes-e7ff995048ea8eaa1735097c1245db8162b1e535.jar" />
+    </item>
+    <item
+        jar="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\PlainViews\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\PlainViews\build\intermediates\pre-dexed\debug\classes-2cff78dcbe1d5611669a6eceb796ca331f663944.jar" />
+    </item>
+    <item
+        jar="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\PlainViews\build\intermediates\exploded-aar\com.android.support\support-v13\23.0.1\jars\libs\internal_impl-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a0c456a59e1edab84702b48a626705aa1d830ccc">
+        <dex dex="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\PlainViews\build\intermediates\pre-dexed\debug\internal_impl-23.0.1-043960bf141ba25a5554642352c7c3789ebcc7be.jar" />
+    </item>
+    <item
+        jar="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\AndroidDeskClock\build\intermediates\exploded-aar\com.android.support\design\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="e5c61a3169221a89654ffcaaed47bba51cf071ad">
+        <dex dex="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\AndroidDeskClock\build\intermediates\pre-dexed\debug\classes-c09a67eed1b80035a89eacad1ac2c9dac6a9bb42.jar" />
+    </item>
+    <item
+        jar="C:\Users\piha\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.1\support-annotations-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\AndroidDeskClock\build\intermediates\pre-dexed\debug\support-annotations-23.0.1-c62ec394e2ab3864cbf4015b40711358cfe283f7.jar" />
+    </item>
+    <item
+        jar="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\PlainViews\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\libs\internal_impl-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\PlainViews\build\intermediates\pre-dexed\debug\internal_impl-23.0.1-3cdd3f58ba51e4c41823ba5cbe4671bc3aa10a94.jar" />
+    </item>
+    <item
+        jar="C:\Users\piha\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.1\support-annotations-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\PlainViews\build\intermediates\pre-dexed\debug\support-annotations-23.0.1-c62ec394e2ab3864cbf4015b40711358cfe283f7.jar" />
+    </item>
+    <item
+        jar="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\AndroidDeskClock\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="4356e230a981d1bbf047d848b91bc0d9b7c5bacc">
+        <dex dex="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\AndroidDeskClock\build\intermediates\pre-dexed\debug\classes-d9d9b6fdaedb88e65a28f4b8fdc9b2e7957aa84d.jar" />
+    </item>
+    <item
+        jar="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\AndroidDeskClock\build\intermediates\exploded-aar\com.android.support\support-v13\23.0.1\jars\libs\internal_impl-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a0c456a59e1edab84702b48a626705aa1d830ccc">
+        <dex dex="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\AndroidDeskClock\build\intermediates\pre-dexed\debug\internal_impl-23.0.1-4b7e4c35736d0034bae7c078d3eb7dcb3231e85a.jar" />
+    </item>
+    <item
+        jar="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\AndroidDeskClock\build\intermediates\exploded-aar\com.android.support\gridlayout-v7\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1134458f31b57c1b185e9efabba10219d41f2c85">
+        <dex dex="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\AndroidDeskClock\build\intermediates\pre-dexed\debug\classes-0d5846dad10ba187df75015b79250060840c304e.jar" />
+    </item>
+    <item
+        jar="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\AndroidDeskClock\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\AndroidDeskClock\build\intermediates\pre-dexed\debug\classes-71715417ddf697c87ba9c3f0be5d1c75a3abea49.jar" />
+    </item>
+    <item
+        jar="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\PlainViews\build\intermediates\exploded-aar\com.android.support\gridlayout-v7\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="1134458f31b57c1b185e9efabba10219d41f2c85">
+        <dex dex="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\PlainViews\build\intermediates\pre-dexed\debug\classes-9f7661977dd360478e02332e9f5123f241cdc13c.jar" />
+    </item>
+    <item
+        jar="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\PlainViews\build\intermediates\exploded-aar\com.android.support\support-v13\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8c046c952177602c858ed41c8fc492c939bde9aa">
+        <dex dex="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\PlainViews\build\intermediates\pre-dexed\debug\classes-b139583446fefb50d7e093c21cea5a118887586a.jar" />
+    </item>
+    <item
+        jar="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\PlainViews\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="C:\Users\piha\Documents\Projects\t-mobile\workspace\codeparts\PlainViews\build\intermediates\pre-dexed\debug\classes-c0ef087fb3611dc514659e45d21241b3e38eb2be.jar" />
+    </item>
+
+</items>

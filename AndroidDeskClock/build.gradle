@@ -25,6 +25,7 @@ buildscript {
 }
 
 repositories {
+    // TODO: remove it (maven)
     maven { url "http://github.com/StrengthFM/mvn-repo/raw/master" }
 }
 
@@ -37,6 +38,12 @@ android {
 
     defaultConfig {
         applicationId "com.mobica.ocf2"
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+        }
     }
 
     sourceSets {
