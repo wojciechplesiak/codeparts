@@ -244,4 +244,39 @@
     </style>
     <style name="Platform.ThemeOverlay.AppCompat.Dark"/>
     <style name="Platform.ThemeOverlay.AppCompat.Light"/>
+    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values-v21/styles.xml -->
+    <eat-comment/>
+    <style name="PrimaryLabelTextAppearance" parent="@style/PrimaryLabelTextParentAppearance">
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="SecondaryLabelTextAppearance" parent="@style/SecondaryLabelTextParentAppearance">
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="SettingsAlertDialogTheme" parent="android:Theme.Material.Dialog.Alert">
+        <item name="android:colorAccent">?attr/colorAccent</item>
+    </style>
+    <style name="SettingsTheme" parent="TranslucentDecorActivityTheme">
+        <item name="android:alertDialogTheme">@style/SettingsAlertDialogTheme</item>
+        <item name="android:detailsElementBackground">@null</item>
+
+        <!-- Attributes from support.v7.appcompat -->
+        <item name="actionBarStyle">@style/SettingsActionBarStyle</item>
+        <item name="colorControlActivated">?attr/colorAccent</item>
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">false</item>
+    </style>
+    <style name="TextAppearance.StatusBar.EventContent">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black_54p</item>
+    </style>
+    <style name="TextAppearance.StatusBar.EventContent.Action">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/black_54p</item>
+    </style>
+    <style name="TextAppearance.StatusBar.EventContent.Title">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black_87p</item>
+    </style>
 </resources>

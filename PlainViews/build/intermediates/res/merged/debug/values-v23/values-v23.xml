@@ -18,4 +18,15 @@
         <item name="controlBackground">@drawable/abc_control_background_material</item>
     </style>
     <style name="Base.Widget.AppCompat.Button.Colored" parent="android:Widget.Material.Button.Colored"/>
+    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values-v23/styles.xml -->
+    <eat-comment/>
+    <style name="widget_big_thin" parent="big_thin">
+        <item name="android:textSize">@dimen/widget_big_font_size</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+    <style name="widget_label" parent="label">
+        <item name="android:textSize">@dimen/widget_label_font_size</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.15</item>
+    </style>
 </resources>

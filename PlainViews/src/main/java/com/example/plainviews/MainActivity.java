@@ -7,6 +7,8 @@ import android.view.Menu;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.example.plainviews.widget.RtlViewPager;
+
 public class MainActivity extends BaseActivity {
 
 
@@ -17,10 +19,10 @@ public class MainActivity extends BaseActivity {
 
     private TabLayout mTabLayout;
     private Menu mMenu;
-  //  private RtlViewPager mViewPager;
+    private RtlViewPager mViewPager;
 
 
-  //  private TabsAdapter mTabsAdapter;
+    //  private TabsAdapter mTabsAdapter;
     private int mSelectedTab;
     private boolean mActivityResumed;
 
@@ -38,6 +40,11 @@ public class MainActivity extends BaseActivity {
     private void createTabs() {
 
     }
+
+    public int getSelectedTab() {
+        return mSelectedTab;
+    }
+
 }
 
 
