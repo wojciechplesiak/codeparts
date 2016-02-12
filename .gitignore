@@ -1,0 +1,12 @@
+.gradle/
+.idea/
+
+# Generated files
+bin/
+gen/
+build/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+*.iml
