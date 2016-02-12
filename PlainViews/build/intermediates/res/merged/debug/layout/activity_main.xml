@@ -25,19 +25,18 @@
 
     </android.support.v7.widget.Toolbar>
 
-
+<!--
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.example.plainviews.widget.RtlViewPager
+        <com.android.deskclock.widget.RtlViewPager
             android:id="@+id/main_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
     </FrameLayout>
-
-    <!-- originally there were here 3 framelayouts/linear layout with some staff like FAB or 2 buttons I didn't see anywhere-->
+    -->
 
 </LinearLayout>
 <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/layout/activity_main.xml -->

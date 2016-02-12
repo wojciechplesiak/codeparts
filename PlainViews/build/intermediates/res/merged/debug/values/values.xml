@@ -19,47 +19,23 @@
     <color name="abc_search_url_text_selected">@android:color/black</color>
     <color name="accent_material_dark">@color/material_deep_teal_200</color>
     <color name="accent_material_light">@color/material_deep_teal_500</color>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values/colors.xml -->
-    <eat-comment/>
-    <color name="action_bar_button_text_color">#FFFFFF</color>
-    <color name="ampm_off">#ff404040</color>
-    <color name="ampm_on">#ffffffff</color>
-    <color name="ampm_text_color">#99FFFFFF</color>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
-    <eat-comment/>
     <color name="background_floating_material_dark">@color/material_grey_800</color>
     <color name="background_floating_material_light">@android:color/white</color>
     <color name="background_material_dark">@color/material_grey_850</color>
     <color name="background_material_light">@color/material_grey_50</color>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values/colors.xml -->
-    <eat-comment/>
-    <color name="black">#ff000000</color>
-    <color name="black_16p">#28000000</color>
-    <color name="black_54p">#8a000000</color>
-    <color name="black_87p">#de000000</color>
-    <color name="blackish_selected">#0cffffff</color>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
-    <eat-comment/>
     <color name="bright_foreground_disabled_material_dark">#80ffffff</color>
     <color name="bright_foreground_disabled_material_light">#80000000</color>
     <color name="bright_foreground_inverse_material_dark">@color/bright_foreground_material_light</color>
     <color name="bright_foreground_inverse_material_light">@color/bright_foreground_material_dark</color>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values/colors.xml -->
-    <eat-comment/>
-    <color name="bright_foreground_light_disabled">#80000000</color>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
-    <eat-comment/>
     <color name="bright_foreground_material_dark">@android:color/white</color>
     <color name="bright_foreground_material_light">@android:color/black</color>
     <color name="button_material_dark">#ff5a595b</color>
     <color name="button_material_light">#ffd6d7d7</color>
     <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values/colors.xml -->
     <eat-comment/>
-    <color name="clock_gray">#B3ffffff</color>
-    <color name="clock_white">#ffffff</color>
-    <color name="color_accent">#DA4336</color>
-    <color name="control_highlight_color">#42ffffff</color>
-    <color name="default_background">#1A237E</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
     <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/build/intermediates/exploded-aar/com.android.support/design/23.0.1/res/values/values.xml -->
     <eat-comment/>
     <color name="design_fab_shadow_end_color">@android:color/transparent</color>
@@ -71,9 +47,6 @@
     <color name="design_fab_stroke_top_outer_color">#2EFFFFFF</color>
     <color name="design_snackbar_background_color">#323232</color>
     <color name="design_textinput_error_color">#FFDD2C00</color>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values/colors.xml -->
-    <eat-comment/>
-    <color name="dialog_gray">#28ffffff</color>
     <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
     <color name="dim_foreground_disabled_material_dark">#80bebebe</color>
@@ -82,11 +55,6 @@
     <color name="dim_foreground_material_light">#ff323232</color>
     <color name="foreground_material_dark">@android:color/white</color>
     <color name="foreground_material_light">@android:color/black</color>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values/colors.xml -->
-    <eat-comment/>
-    <color name="hairline">#28ffffff</color>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
-    <eat-comment/>
     <color name="highlighted_text_material_dark">#6680cbc4</color>
     <color name="highlighted_text_material_light">#66009688</color>
     <color name="hint_foreground_material_dark">@color/bright_foreground_disabled_material_dark</color>
@@ -103,16 +71,6 @@
     <color name="material_grey_800">#ff424242</color>
     <color name="material_grey_850">#ff303030</color>
     <color name="material_grey_900">#ff212121</color>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values/colors.xml -->
-    <eat-comment/>
-    <color name="notif_text_grey">#9c9c9c</color>
-    <color name="notification_bg">#181818</color>
-    <color name="notification_divider">#272727</color>
-    <color name="notification_icon_bg">#1C3742</color>
-    <color name="notification_pressed">#333333</color>
-    <color name="pressed_state_color">#33999999</color>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
-    <eat-comment/>
     <color name="primary_dark_material_dark">@android:color/black</color>
     <color name="primary_dark_material_light">@color/material_grey_600</color>
     <color name="primary_material_dark">@color/material_grey_900</color>
@@ -123,32 +81,14 @@
     <color name="primary_text_disabled_material_light">#39000000</color>
     <color name="ripple_material_dark">#42ffffff</color>
     <color name="ripple_material_light">#1f000000</color>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values/colors.xml -->
-    <eat-comment/>
-    <color name="screen_saver_color">#FF006688</color>
-    <color name="screen_saver_dim_color">#FF001634</color>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
-    <eat-comment/>
     <color name="secondary_text_default_material_dark">#b3ffffff</color>
     <color name="secondary_text_default_material_light">#8a000000</color>
     <color name="secondary_text_disabled_material_dark">#36ffffff</color>
     <color name="secondary_text_disabled_material_light">#24000000</color>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values/colors.xml -->
-    <eat-comment/>
-    <color name="status_bar">#66000000</color>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
-    <eat-comment/>
     <color name="switch_thumb_disabled_material_dark">#ff616161</color>
     <color name="switch_thumb_disabled_material_light">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_dark">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values/colors.xml -->
-    <eat-comment/>
-    <color name="time_picker_gray">#212121</color>
-    <color name="time_text_color">#E6FFFFFF</color>
-    <color name="transparent">#00000000</color>
-    <color name="white">#ffffffff</color>
-    <color name="white_69p">#B1FFFFFF</color>
     <declare-styleable name="ActionBar"><attr name="navigationMode"><enum name="normal" value="0"/><enum name="listMode" value="1"/><enum name="tabMode" value="2"/></attr><attr name="displayOptions"><flag name="none" value="0"/><flag name="useLogo" value="0x1"/><flag name="showHome" value="0x2"/><flag name="homeAsUp" value="0x4"/><flag name="showTitle" value="0x8"/><flag name="showCustom" value="0x10"/><flag name="disableHome" value="0x20"/></attr><attr name="title"/><attr format="string" name="subtitle"/><attr format="reference" name="titleTextStyle"/><attr format="reference" name="subtitleTextStyle"/><attr format="reference" name="icon"/><attr format="reference" name="logo"/><attr format="reference" name="divider"/><attr format="reference" name="background"/><attr format="reference|color" name="backgroundStacked"/><attr format="reference|color" name="backgroundSplit"/><attr format="reference" name="customNavigationLayout"/><attr name="height"/><attr format="reference" name="homeLayout"/><attr format="reference" name="progressBarStyle"/><attr format="reference" name="indeterminateProgressStyle"/><attr format="dimension" name="progressBarPadding"/><attr name="homeAsUpIndicator"/><attr format="dimension" name="itemPadding"/><attr format="boolean" name="hideOnContentScroll"/><attr format="dimension" name="contentInsetStart"/><attr format="dimension" name="contentInsetEnd"/><attr format="dimension" name="contentInsetLeft"/><attr format="dimension" name="contentInsetRight"/><attr format="dimension" name="elevation"/><attr format="reference" name="popupTheme"/></declare-styleable>
     <declare-styleable name="ActionBarLayout"><attr name="android:layout_gravity"/></declare-styleable>
     <declare-styleable name="ActionMenuItemView"><attr name="android:minWidth"/></declare-styleable>
@@ -192,8 +132,6 @@
     <declare-styleable name="View"><attr format="dimension" name="paddingStart"/><attr format="dimension" name="paddingEnd"/><attr name="android:focusable"/><attr format="reference" name="theme"/><attr name="android:theme"/></declare-styleable>
     <declare-styleable name="ViewBackgroundHelper"><attr name="android:background"/><attr format="color" name="backgroundTint"/><attr name="backgroundTintMode"><enum name="src_over" value="3"/><enum name="src_in" value="5"/><enum name="src_atop" value="9"/><enum name="multiply" value="14"/><enum name="screen" value="15"/></attr></declare-styleable>
     <declare-styleable name="ViewStubCompat"><attr name="android:layout"/><attr name="android:inflatedId"/><attr name="android:id"/></declare-styleable>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
-    <eat-comment/>
     <dimen name="abc_action_bar_content_inset_material">16dp</dimen>
     <dimen name="abc_action_bar_default_height_material">56dp</dimen>
     <dimen name="abc_action_bar_default_padding_end_material">0dp</dimen>
@@ -256,54 +194,8 @@
     <dimen name="abc_text_size_title_material_toolbar">20dp</dimen>
     <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values/dimens.xml -->
     <eat-comment/>
-    <dimen name="actionbar_tab_padding">0dip</dimen>
-    <dimen name="actionbar_title_font_size">18sp</dimen>
-    <dimen name="alarm_alert_display_width">304dip</dimen>
-    <dimen name="alarm_alert_hint_padding">32dip</dimen>
-    <dimen name="alarm_clock_vertical_margin">12dip</dimen>
-    <dimen name="alarm_horizontal_padding">16dp</dimen>
-    <dimen name="alarm_info_font_size">36sp</dimen>
-    <dimen name="alarm_label_padding">8dip</dimen>
-    <dimen name="alarm_label_size">14sp</dimen>
-    <dimen name="alarm_lockscreen_alarm_horizontal_padding">16dp</dimen>
-    <dimen name="alarm_lockscreen_alarm_vertical_padding">48dp</dimen>
-    <dimen name="alarm_lockscreen_bottom_margin">40dp</dimen>
-    <dimen name="alarm_lockscreen_pulse_radius">128dp</dimen>
-    <dimen name="alarm_min_distance">2dp</dimen>
-    <dimen name="alarm_picker_dialog_horizontal_margin">30dp</dimen>
-    <dimen name="alarm_picker_dialog_vertical_margin">20dp</dimen>
-    <dimen name="alarm_picker_margin_bottom">10dp</dimen>
-    <dimen name="alarm_side_padding">12dip</dimen>
-    <dimen name="alarm_text_font_size">16sp</dimen>
-    <dimen name="alarm_text_padding">15dp</dimen>
-    <dimen name="alarm_time_font_size">64sp</dimen>
-    <dimen name="alarm_undo_bar_horizontal_margin">8dp</dimen>
-    <dimen name="alert_dialog_title_height">64dip</dimen>
-    <dimen name="ampm_text_size">20dip</dimen>
-    <dimen name="analog_clock_margin">60dp</dimen>
-    <dimen name="big_font_size">60sp</dimen>
-    <dimen name="body_font_padding">4dp</dimen>
-    <dimen name="body_font_size">18sp</dimen>
-    <dimen name="bottom_text_size">16sp</dimen>
-    <dimen name="bottom_text_spacing_analog">14dp</dimen>
-    <dimen name="bottom_text_spacing_analog_small">6dp</dimen>
-    <dimen name="bottom_text_spacing_digital">-8dp</dimen>
-    <dimen name="button_font_size">24sp</dimen>
-    <dimen name="button_footer_height">88dip</dimen>
-    <dimen name="button_footer_height_neg">-48dip</dimen>
-    <dimen name="circle_margin">32dp</dimen>
-    <dimen name="circle_margin_top">16dp</dimen>
-    <dimen name="circle_size">280dp</dimen>
-    <dimen name="circletimer_circle_size">4dip</dimen>
-    <dimen name="circletimer_dot_size">12dip</dimen>
-    <dimen name="circletimer_marker_size">16dip</dimen>
-    <dimen name="cities_list_item_height">56dip</dimen>
-    <dimen name="clock_fragment_end_padding">12dip</dimen>
-    <dimen name="clock_side_padding">12dip</dimen>
-    <dimen name="clock_side_padding_reduced">0dip</dimen>
-    <dimen name="collapse_expand_height">72dip</dimen>
-    <dimen name="date_text_size">15sp</dimen>
-    <dimen name="day_button_font_size">18sp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
     <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/build/intermediates/exploded-aar/com.android.support/gridlayout-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
     <dimen name="default_gap">8dip</dimen>
@@ -335,111 +227,25 @@
     <dimen name="design_snackbar_text_size">14sp</dimen>
     <dimen name="design_tab_max_width">264dp</dimen>
     <dimen name="design_tab_min_width">72dp</dimen>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values/dimens.xml -->
-    <eat-comment/>
-    <dimen name="dialog_button_font_size">16sp</dimen>
     <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
     <item name="dialog_fixed_height_major" type="dimen">80%</item>
     <item name="dialog_fixed_height_minor" type="dimen">100%</item>
     <item name="dialog_fixed_width_major" type="dimen">320dp</item>
     <item name="dialog_fixed_width_minor" type="dimen">320dp</item>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values/dimens.xml -->
-    <eat-comment/>
-    <dimen name="dialpad_digit_padding">22dip</dimen>
-    <dimen name="dialpad_font_size">36sp</dimen>
-    <dimen name="digital_widget_city_margin_bottom">10dp</dimen>
-    <dimen name="digital_widget_list_margin_top">20dp</dimen>
-    <dimen name="digital_widget_list_min_fixed_height">12dp</dimen>
-    <dimen name="digital_widget_list_min_scaled_height">162dp</dimen>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
-    <eat-comment/>
     <item format="float" name="disabled_alpha_material_dark" type="dimen">0.30</item>
     <item format="float" name="disabled_alpha_material_light" type="dimen">0.26</item>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values/dimens.xml -->
-    <eat-comment/>
-    <dimen name="fab_elevation">8dp</dimen>
-    <dimen name="fab_margin">0dp</dimen>
-    <dimen name="fastscroll_preview_padding">8dp</dimen>
-    <dimen name="fastscroll_thumb_height">48dp</dimen>
-    <dimen name="fastscroll_thumb_width">8dp</dimen>
-    <dimen name="fastscroll_track_width">8dp</dimen>
-    <dimen name="footer_button_layout_margin">16dip</dimen>
-    <dimen name="footer_button_size">56dip</dimen>
-    <dimen name="hairline_height">1dip</dimen>
-    <dimen name="hairline_side_padding">6dp</dimen>
-    <dimen name="header_font_size">24sp</dimen>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
-    <eat-comment/>
     <item format="float" name="highlight_alpha_material_colored" type="dimen">0.26</item>
     <item format="float" name="highlight_alpha_material_dark" type="dimen">0.20</item>
     <item format="float" name="highlight_alpha_material_light" type="dimen">0.12</item>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values/dimens.xml -->
-    <eat-comment/>
-    <dimen name="icon_margin">4dp</dimen>
     <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
     <dimen name="item_touch_helper_max_drag_scroll_per_frame">20dp</dimen>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values/dimens.xml -->
-    <eat-comment/>
-    <dimen name="label_edittext_padding">21dp</dimen>
-    <dimen name="label_font_size">16sp</dimen>
-    <dimen name="label_margin_big">4dp</dimen>
-    <dimen name="label_margin_small">2dp</dimen>
-    <dimen name="label_text_size">14sp</dimen>
-    <dimen name="main_ampm_font_size">32sp</dimen>
-    <dimen name="main_clock_padding">34dp</dimen>
-    <dimen name="medium_font_padding">12dp</dimen>
-    <dimen name="medium_font_size">56sp</dimen>
-    <dimen name="medium_space_bottom">12dp</dimen>
-    <dimen name="medium_space_top">22dp</dimen>
-    <dimen name="min_digital_widget_height">129dip</dimen>
-    <dimen name="min_digital_widget_width">206dip</dimen>
-    <dimen name="next_alarm_text_size">15sp</dimen>
-    <dimen name="no_alarm_font_size">16sp</dimen>
-    <dimen name="notification_icon_size">64dip</dimen>
     <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
     <dimen name="notification_large_icon_height">64dp</dimen>
     <dimen name="notification_large_icon_width">64dp</dimen>
     <dimen name="notification_subtext_size">12dp</dimen>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values/dimens.xml -->
-    <eat-comment/>
-    <dimen name="notification_text_size">14dp</dimen>
-    <dimen name="notification_title_text_size">18dp</dimen>
-    <dimen name="screensaver_margin">16dip</dimen>
-    <dimen name="small_font_size">32sp</dimen>
-    <dimen name="small_space">16dp</dimen>
-    <dimen name="stopwatch_list_bottom_spacing">72dip</dimen>
-    <dimen name="style_label_space">4dip</dimen>
-    <dimen name="sw_item_space">16dip</dimen>
-    <dimen name="sw_padding_end">32dp</dimen>
-    <dimen name="tall_row_height">58dp</dimen>
-    <dimen name="time_margin_top">32dip</dimen>
-    <dimen name="time_text_size">120dip</dimen>
-    <dimen name="timer_cancel_end_margin">116dip</dimen>
-    <dimen name="timer_circle_margin">32dp</dimen>
-    <dimen name="timer_divider_height">24dip</dimen>
-    <dimen name="timer_list_padding_bottom">88dip</dimen>
-    <dimen name="timer_padding_left">16dip</dimen>
-    <dimen name="timer_setup_button_size">24sp</dimen>
-    <dimen name="timer_setup_delete_padding">12dip</dimen>
-    <dimen name="timer_setup_delete_start_margin">28sp</dimen>
-    <dimen name="timer_setup_font_size">56sp</dimen>
-    <dimen name="timer_setup_label_size">18sp</dimen>
-    <dimen name="toast_bar_bottom_margin_in_conversation">24dip</dimen>
-    <dimen name="top_text_spacing_digital">4dp</dimen>
-    <dimen name="touch_target_min_size">48dip</dimen>
-    <dimen name="widget_24_medium_font_size">40sp</dimen>
-    <dimen name="widget_big_font_size">75dp</dimen>
-    <dimen name="widget_big_time_margin_right">10dip</dimen>
-    <dimen name="widget_label_font_size">14dp</dimen>
-    <dimen name="widget_medium_font_size">32sp</dimen>
-    <dimen name="widget_medium_time_margin_right">5dip</dimen>
-    <dimen name="world_clock_analog_size">100dip</dimen>
-    <dimen name="world_clock_margin">32dp</dimen>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
-    <eat-comment/>
     <drawable name="notification_template_icon_bg">#3333B5E5</drawable>
     <item name="action_bar_activity_content" type="id"/>
     <item name="action_bar_spinner" type="id"/>
@@ -497,29 +303,23 @@
     <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="menu_item_help">Help</string>
-    <string name="menu_item_night_mode">Night mode</string>
-    <string name="menu_item_settings">Settings</string>
     <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values/styles.xml -->
-    <eat-comment/>
-    <style name="AlarmAlertFullScreenTheme" parent="TranslucentDecorActivityTheme"/>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
-    <eat-comment/>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
+    <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
+    <style name="Animation.AppCompat.DropDownUp" parent="Base.Animation.AppCompat.DropDownUp"/>
     <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values/styles.xml -->
     <eat-comment/>
-    <style name="AlertDialogTheme" parent="Theme.AppCompat.Dialog.Alert">
-        <!-- Attributes from support.v7.appcompat -->
-        <item name="colorAccent">@color/color_accent</item>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
     <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
-    <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
-    <style name="Animation.AppCompat.DropDownUp" parent="Base.Animation.AppCompat.DropDownUp"/>
     <style name="Base.AlertDialog.AppCompat" parent="android:Widget">
         <item name="android:layout">@layout/abc_alert_dialog_material</item>
         <item name="listLayout">@layout/abc_select_dialog_material</item>
@@ -1445,37 +1245,6 @@
         <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>
         <item name="tabSelectedTextColor">?android:textColorPrimary</item>
     </style>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values/styles.xml -->
-    <eat-comment/>
-    <style name="BaseActivityTheme" parent="Theme.AppCompat">
-        <item name="android:imageButtonStyle">@style/ImageButtonStyle</item>
-        <item name="android:windowBackground">@color/default_background</item>
-
-        <item name="alertDialogTheme">@style/AlertDialogTheme</item>
-        <item name="colorAccent">@color/color_accent</item>
-        <item name="colorPrimaryDark">@color/status_bar</item>
-        <item name="colorControlActivated">@color/white</item>
-        <item name="colorControlNormal">@color/white</item>
-    </style>
-    <style name="CitiesActionBarStyle" parent="Widget.AppCompat.ActionBar">
-        <item name="android:background">@null</item>
-
-        <!-- Attributes from support.v7.appcompat -->
-        <item name="displayOptions">homeAsUp</item>
-    </style>
-    <style name="ControlAccentThemeOverlay">
-        <!-- Attributes from support.v7.appcompat -->
-        <item name="colorControlActivated">?attr/colorAccent</item>
-    </style>
-    <style name="DeskClockTabBaseStyle" parent="Widget.AppCompat.ActionBar.TabView">
-        <item name="android:paddingLeft">@dimen/actionbar_tab_padding</item>
-        <item name="android:paddingRight">@dimen/actionbar_tab_padding</item>
-        <item name="android:gravity">center</item>
-    </style>
-    <style name="DeskClockTheme" parent="@style/TranslucentDecorActivityTheme"/>
-    <style name="ImageButtonStyle" parent="android:Widget.DeviceDefault.ImageButton">
-        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
-    </style>
     <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
     <style name="Platform.AppCompat" parent="android:Theme">
@@ -1576,21 +1345,6 @@
         <item name="android:dropDownItemStyle">@style/Widget.AppCompat.DropDownItem.Spinner</item>
     </style>
     <style name="Platform.Widget.AppCompat.Spinner" parent="android:Widget.Spinner"/>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values/styles.xml -->
-    <eat-comment/>
-    <style name="PrimaryLabelTextAppearance" parent="PrimaryLabelTextParentAppearance"/>
-    <style name="PrimaryLabelTextParentAppearance">
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">@dimen/label_text_size</item>
-    </style>
-    <style name="RoundTouchButton">
-        <item name="android:gravity">center</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@null</item>
-    </style>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
-    <eat-comment/>
     <style name="RtlOverlay.DialogWindowTitle.AppCompat" parent="Base.DialogWindowTitle.AppCompat">
     </style>
     <style name="RtlOverlay.Widget.AppCompat.ActionBar.TitleItem" parent="android:Widget">
@@ -1633,33 +1387,6 @@
     <style name="RtlOverlay.Widget.AppCompat.SearchView.MagIcon" parent="android:Widget">
         <item name="android:layout_marginLeft">@dimen/abc_dropdownitem_text_padding_left</item>
     </style>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values/styles.xml -->
-    <eat-comment/>
-    <style name="ScreensaverActivityTheme" parent="Theme.AppCompat.NoActionBar"/>
-    <style name="SecondaryLabelTextAppearance" parent="SecondaryLabelTextParentAppearance"/>
-    <style name="SecondaryLabelTextParentAppearance">
-        <item name="android:textColor">@color/white_69p</item>
-        <item name="android:textSize">@dimen/label_text_size</item>
-    </style>
-    <style name="SettingsActionBarStyle" parent="@style/Widget.AppCompat.Toolbar">
-        <item name="android:background">@null</item>
-
-        <!-- Attributes from support.v7.appcompat -->
-        <item name="displayOptions">showTitle|homeAsUp</item>
-    </style>
-    <style name="SettingsTheme" parent="TranslucentDecorActivityTheme">
-        <item name="android:detailsElementBackground">@null</item>
-        <!-- Attributes from support.v7.appcompat -->
-        <item name="actionBarStyle">@style/SettingsActionBarStyle</item>
-        <item name="windowActionBar">true</item>
-        <item name="windowNoTitle">false</item>
-    </style>
-    <style name="TextAppearance">
-        <item name="android:textSize">16sp</item>
-        <item name="android:textStyle">normal</item>
-    </style>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
-    <eat-comment/>
     <style name="TextAppearance.AppCompat" parent="Base.TextAppearance.AppCompat"/>
     <style name="TextAppearance.AppCompat.Body1" parent="Base.TextAppearance.AppCompat.Body1"/>
     <style name="TextAppearance.AppCompat.Body2" parent="Base.TextAppearance.AppCompat.Body2"/>
@@ -1736,28 +1463,13 @@
         <item name="android:textColor">?android:textColorSecondary</item>
         <item name="textAllCaps">true</item>
     </style>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values/styles.xml -->
-    <eat-comment/>
-    <style name="TextAppearance.StatusBar">
-        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
-    </style>
-    <style name="TextAppearance.StatusBar.EventContent">
-        <item name="android:textSize">@dimen/notification_text_size</item>
-        <item name="android:textColor">@color/notif_text_grey</item>
-    </style>
     <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
+    <style name="TextAppearance.StatusBar.EventContent" parent=""/>
     <style name="TextAppearance.StatusBar.EventContent.Info" parent=""/>
     <style name="TextAppearance.StatusBar.EventContent.Line2" parent=""/>
     <style name="TextAppearance.StatusBar.EventContent.Time" parent=""/>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values/styles.xml -->
-    <eat-comment/>
-    <style name="TextAppearance.StatusBar.EventContent.Title">
-        <item name="android:textSize">@dimen/notification_title_text_size</item>
-        <item name="android:textColor">@color/white</item>
-    </style>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
-    <eat-comment/>
+    <style name="TextAppearance.StatusBar.EventContent.Title" parent=""/>
     <style name="TextAppearance.Widget.AppCompat.ExpandedMenu.Item" parent="Base.TextAppearance.Widget.AppCompat.ExpandedMenu.Item">
     </style>
     <style name="TextAppearance.Widget.AppCompat.Toolbar.Subtitle" parent="Base.TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
@@ -1791,33 +1503,6 @@
     <style name="ThemeOverlay.AppCompat.Dark" parent="Base.ThemeOverlay.AppCompat.Dark"/>
     <style name="ThemeOverlay.AppCompat.Dark.ActionBar" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="ThemeOverlay.AppCompat.Light" parent="Base.ThemeOverlay.AppCompat.Light"/>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values/styles.xml -->
-    <eat-comment/>
-    <style name="TimerAlertFullScreenTheme" parent="TranslucentDecorActivityTheme"/>
-    <style name="ToastBarStyle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">48dip</item>
-        <item name="android:layout_gravity">bottom</item>
-        <item name="android:layout_marginLeft">4dip</item>
-        <item name="android:layout_marginRight">4dip</item>
-        <item name="android:orientation">horizontal</item>
-        <item name="android:gravity">center_vertical</item>
-        <!--<item name="android:background">@drawable/panel_undo_holo</item>-->
-        <item name="android:visibility">gone</item>
-        <item name="android:alpha">0</item>
-        <item name="android:clickable">true</item>
-    </style>
-    <style name="TranslucentDecorActivityTheme" parent="BaseActivityTheme">
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>
-
-        <!-- Attributes from support.v7.appcompat -->
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
-    <eat-comment/>
     <style name="Widget.AppCompat.ActionBar" parent="Base.Widget.AppCompat.ActionBar">
     </style>
     <style name="Widget.AppCompat.ActionBar.Solid" parent="Base.Widget.AppCompat.ActionBar.Solid">
@@ -1957,106 +1642,5 @@
     <style name="Widget.Design.TextInputLayout" parent="android:Widget">
         <item name="hintTextAppearance">@style/TextAppearance.Design.Hint</item>
         <item name="errorTextAppearance">@style/TextAppearance.Design.Error</item>
-    </style>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/PlainViews/src/main/res/values/styles.xml -->
-    <eat-comment/>
-    <style name="alarm_label">
-        <item name="android:textSize">@dimen/alarm_label_size</item>
-    </style>
-    <style name="alarm_label_bold" parent="alarm_label">
-        <item name="android:textStyle">bold</item>
-    </style>
-    <style name="alarm_label_not_caps" parent="alarm_label">
-        <item name="android:textAllCaps">false</item>
-    </style>
-    <style name="alarm_list_left_column">
-        <item name="android:layout_width">68dip</item>
-        <item name="android:layout_height">68dip</item>
-    </style>
-    <style name="alarm_lockscreen_thin">
-        <item name="android:textSize">@dimen/alarm_info_font_size</item>
-        <item name="android:fontFamily">sans-serif-thin</item>
-    </style>
-    <style name="big_thin">
-        <item name="android:textSize">@dimen/big_font_size</item>
-        <item name="android:fontFamily">sans-serif-thin</item>
-    </style>
-    <style name="body">
-        <item name="android:textSize">@dimen/body_font_size</item>
-    </style>
-    <style name="body_bold">
-        <item name="android:textSize">@dimen/body_font_size</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-    <style name="body_not_caps" parent="body">
-        <item name="android:textAllCaps">false</item>
-    </style>
-    <style name="clock">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_gravity">center_horizontal</item>
-    </style>
-    <style name="dialpad">
-        <item name="android:textSize">@dimen/dialpad_font_size</item>
-        <item name="android:fontFamily">sans-serif-thin</item>
-    </style>
-    <style name="header">
-        <item name="android:textSize">@dimen/header_font_size</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-    <style name="header_not_caps" parent="header">
-        <item name="android:textAllCaps">false</item>
-    </style>
-    <style name="label">
-        <item name="android:textSize">@dimen/label_font_size</item>
-    </style>
-    <style name="labelEditTextStyle">
-        <item name="android:textCursorDrawable">@null</item>
-        <item name="android:inputType">textCapSentences</item>
-        <item name="android:selectAllOnFocus">true</item>
-    </style>
-    <style name="label_not_caps" parent="label">
-        <item name="android:textAllCaps">false</item>
-    </style>
-    <style name="medium_light">
-        <item name="android:textSize">@dimen/medium_font_size</item>
-        <item name="android:fontFamily">sans-serif-thin</item>
-    </style>
-    <style name="no_alarms">
-        <item name="android:textSize">@dimen/no_alarm_font_size</item>
-        <item name="android:textColor">@color/white_69p</item>
-    </style>
-    <style name="small_bold">
-        <item name="android:textSize">@dimen/small_font_size</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-    <style name="small_light">
-        <item name="android:textSize">@dimen/small_font_size</item>
-        <item name="android:fontFamily">sans-serif-light</item>
-    </style>
-    <style name="small_thin">
-        <item name="android:textSize">@dimen/small_font_size</item>
-        <item name="android:fontFamily">sans-serif-thin</item>
-    </style>
-    <style name="timer_setup_digit">
-        <item name="android:textSize">@dimen/timer_setup_font_size</item>
-        <item name="android:fontFamily">sans-serif-thin</item>
-    </style>
-    <style name="timer_setup_label">
-        <item name="android:textSize">@dimen/timer_setup_label_size</item>
-    </style>
-    <style name="undo_toast" parent="body">
-        <item name="android:textAllCaps">true</item>
-        <item name="android:textColor">@color/color_accent</item>
-    </style>
-    <style name="widget_big_thin" parent="big_thin">
-        <item name="android:textSize">@dimen/widget_big_font_size</item>
-    </style>
-    <style name="widget_label" parent="label">
-        <item name="android:textSize">@dimen/widget_label_font_size</item>
-    </style>
-    <style name="widget_medium_thin">
-        <item name="android:textSize">@dimen/widget_medium_font_size</item>
-        <item name="android:fontFamily">sans-serif-thin</item>
     </style>
 </resources>
