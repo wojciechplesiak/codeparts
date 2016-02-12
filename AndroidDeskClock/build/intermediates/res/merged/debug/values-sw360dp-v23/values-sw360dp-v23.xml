@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- From: file:/C:/Users/piha/Documents/Projects/t-mobile/workspace/codeparts/AndroidDeskClock/res/values-sw360dp-v23/dimens.xml -->
-    <eat-comment/>
-    <dimen name="widget_label_font_size">10dp</dimen>
-</resources>
