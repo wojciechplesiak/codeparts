@@ -20,13 +20,9 @@ import com.example.plainviews.widget.RtlViewPager;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.media.AudioManager;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.VisibleForTesting;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.TabLayout.Tab;
@@ -47,7 +43,6 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.TimeZone;
 
 /**
  * DeskClock clock view for desk docks.
@@ -58,7 +53,6 @@ public class DeskClock extends BaseActivity {
 
     // Alarm action for midnight (so we can update the date display).
     private static final String KEY_SELECTED_TAB = "selected_tab";
-    public static final String SELECT_TAB_INTENT_EXTRA = "deskclock.select.tab";
 
     // Request code used when SettingsActivity is launched.
     private static final int REQUEST_CHANGE_SETTINGS = 1;
@@ -83,6 +77,37 @@ public class DeskClock extends BaseActivity {
     private boolean mActivityResumed;
 
     @Override
+    protected void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
+
+        if (icicle != null) {
+            mSelectedTab = icicle.getInt(KEY_SELECTED_TAB, ALARM_TAB_INDEX);
+        } else {
+            mSelectedTab = ALARM_TAB_INDEX;
+
+            // Set the background color to initially match the theme value so that we can
+            // smoothly transition to the dynamic color.
+//            setBackgroundColor(getResources().getColor(R.color.tab5_color),
+//                    false /* animate */);
+        }
+
+        initViews();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mActivityResumed = true;
+    }
+
+    @Override
+    public void onPause() {
+        mActivityResumed = false;
+//        Utils.showInUseNotifications(this);
+        super.onPause();
+    }
+
+    @Override
     public void onNewIntent(Intent newIntent) {
         super.onNewIntent(newIntent);
         LogUtils.d(TAG, "onNewIntent with intent: %s", newIntent);
@@ -90,13 +115,6 @@ public class DeskClock extends BaseActivity {
         // update our intent so that we can consult it to determine whether or
         // not the most recent launch was via a dock event
         setIntent(newIntent);
-
-        // Timer receiver may ask to go to the timers fragment if a timer expired.
-        int tab = newIntent.getIntExtra(SELECT_TAB_INTENT_EXTRA, -1);
-        if (tab != -1 && mTabLayout != null) {
-            mTabLayout.getTabAt(tab).select();
-            mViewPager.setCurrentItem(tab);
-        }
     }
 
     private void initViews() {
@@ -166,71 +184,7 @@ public class DeskClock extends BaseActivity {
         mTabsAdapter.notifySelectedPage(mSelectedTab);
     }
 
-    @Override
-    protected void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
-        setVolumeControlStream(AudioManager.STREAM_ALARM);
 
-        if (icicle != null) {
-            mSelectedTab = icicle.getInt(KEY_SELECTED_TAB, CLOCK_TAB_INDEX);
-        } else {
-            mSelectedTab = CLOCK_TAB_INDEX;
-
-            // Set the background color to initially match the theme value so that we can
-            // smoothly transition to the dynamic color.
-//            setBackgroundColor(getResources().getColor(R.color.tab5_color),
-//                    false /* animate */);
-        }
-
-        // Timer receiver may ask the app to go to the timer fragment if a timer expired
-        Intent i = getIntent();
-        if (i != null) {
-            int tab = i.getIntExtra(SELECT_TAB_INTENT_EXTRA, -1);
-            if (tab != -1) {
-                mSelectedTab = tab;
-            }
-        }
-        initViews();
-        setHomeTimeZone();
-
-        // We need to update the system next alarm time on app startup because the
-        // user might have clear our data.
-//        AlarmStateManager.updateNextAlarm(this);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        // We only want to show notifications for stopwatch/timer when the app is closed so
-        // that we don't have to worry about keeping the notifications in perfect sync with
-        // the app.
-//        Intent stopwatchIntent = new Intent(getApplicationContext(), StopwatchService.class);
-//        stopwatchIntent.setAction(Stopwatches.KILL_NOTIF);
-//        startService(stopwatchIntent);
-//
-//        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-//        SharedPreferences.Editor editor = prefs.edit();
-//        editor.putBoolean(Timers.NOTIF_APP_OPEN, true);
-//        editor.apply();
-//        sendBroadcast(new Intent(Timers.NOTIF_IN_USE_CANCEL));
-        mActivityResumed = true;
-    }
-
-    @Override
-    public void onPause() {
-        mActivityResumed = false;
-//        Intent intent = new Intent(getApplicationContext(), StopwatchService.class);
-//        intent.setAction(Stopwatches.SHOW_NOTIF);
-//        startService(intent);
-//
-//        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-//        SharedPreferences.Editor editor = prefs.edit();
-//        editor.putBoolean(Timers.NOTIF_APP_OPEN, false);
-//        editor.apply();
-//        Utils.showInUseNotifications(this);
-        super.onPause();
-    }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -258,12 +212,6 @@ public class DeskClock extends BaseActivity {
     }
 
     private void updateMenu(Menu menu) {
-        // Hide "help" if we don't have a URI for it.
-        MenuItem help = menu.findItem(R.id.menu_item_help);
-        if (help != null) {
-            Utils.prepareHelpMenuItem(this, help);
-        }
-
         // Hide "lights out" for timer.
         MenuItem nightMode = menu.findItem(R.id.menu_item_night_mode);
         if (mTabLayout.getSelectedTabPosition() == CLOCK_TAB_INDEX) {
@@ -296,38 +244,12 @@ public class DeskClock extends BaseActivity {
                 startActivityForResult(new Intent(DeskClock.this, SettingsActivity.class),
                         REQUEST_CHANGE_SETTINGS);
                 return true;
-            case R.id.menu_item_help:
-                Intent i = item.getIntent();
-                if (i != null) {
-                    try {
-                        startActivity(i);
-                    } catch (ActivityNotFoundException e) {
-                        // No activity found to match the intent - ignore
-                    }
-                }
-                return true;
             case R.id.menu_item_night_mode:
 //                startActivity(new Intent(DeskClock.this, ScreensaverActivity.class));
             default:
                 break;
         }
         return true;
-    }
-
-    /**
-     * Insert the local time zone as the Home Time Zone if one is not set
-     */
-    private void setHomeTimeZone() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        String homeTimeZone = prefs.getString(SettingsActivity.KEY_HOME_TZ, "");
-        if (!homeTimeZone.isEmpty()) {
-            return;
-        }
-        homeTimeZone = TimeZone.getDefault().getID();
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString(SettingsActivity.KEY_HOME_TZ, homeTimeZone);
-        editor.apply();
-        LogUtils.v(TAG, "Setting home time zone to " + homeTimeZone);
     }
 
     public void registerPageChangedListener(DeskClockFragment frag) {

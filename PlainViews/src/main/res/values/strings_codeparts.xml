@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings_category_one_title">Category One</string>
+    <string name="settings_default_number_title">Default number</string>
+    <string name="settings_switch_one_title">New configuration</string>
+    <string name="settings_switch_one_description">When running new version of
+    app, use new configuration.</string>
+    <string name="settings_process_id_title">Process ID</string>
+    <string name="settings_process_id_message">Exactly certain number of characters:</string>
+    <string name="settings_menu_restore_defaults">Restore defaults</string>
+</resources>
