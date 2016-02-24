@@ -16,6 +16,7 @@
 
 package com.example.plainviews;
 
+import com.example.plainviews.ui.fragment.OneFragment;
 import com.example.plainviews.widget.RtlViewPager;
 
 import android.app.Fragment;
@@ -177,7 +178,7 @@ public class DeskClock extends BaseActivity {
         final Tab stopwatchTab = mTabLayout.newTab();
         stopwatchTab.setIcon(R.drawable.ic_tab_stopwatch)
                 .setContentDescription(R.string.menu_stopwatch);
-        mTabsAdapter.addTab(stopwatchTab, StopwatchFragment.class, STOPWATCH_TAB_INDEX);
+        mTabsAdapter.addTab(stopwatchTab, OneFragment.class, STOPWATCH_TAB_INDEX);
 
         mTabLayout.getTabAt(mSelectedTab).select();
         mViewPager.setCurrentItem(mSelectedTab);

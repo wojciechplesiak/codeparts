@@ -36,7 +36,6 @@ public final class SettingsActivity extends BaseActivity {
     public static final String KEY_DEFAULT_NUMBER = "key_default_number";
     public static final String KEY_SWITCH_ONE = "key_switch_one";
     public static final String KEY_PROCESS_ID = "key_process_id";
-    private static final String EMPTY = "";
 
     private PrefsFragment prefsFragment;
 
@@ -75,9 +74,9 @@ public final class SettingsActivity extends BaseActivity {
     private void restoreDefaults() {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         sp.edit()
-                .putString(KEY_DEFAULT_NUMBER, EMPTY)
+                .putString(KEY_DEFAULT_NUMBER, getString(R.string.default_phone_number))
                 .putBoolean(KEY_SWITCH_ONE, true)
-                .putString(KEY_PROCESS_ID, EMPTY)
+                .putString(KEY_PROCESS_ID, getString(R.string.default_process_id))
                 .apply();
         if (prefsFragment != null) {
             prefsFragment.recreate();
@@ -88,6 +87,8 @@ public final class SettingsActivity extends BaseActivity {
 
     public static class PrefsFragment extends PreferenceFragment
             implements Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
+
+        private static final int PROCESS_ID_LENGTH = 8;
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
@@ -110,8 +111,15 @@ public final class SettingsActivity extends BaseActivity {
         public boolean onPreferenceChange(Preference pref, Object newValue) {
             switch (pref.getKey()) {
                 case KEY_DEFAULT_NUMBER:
-                case KEY_PROCESS_ID:
                     pref.setSummary((String) newValue);
+                case KEY_PROCESS_ID:
+                    String text = (String) newValue;
+                    pref.setSummary(text);
+                    if (text.length() != PROCESS_ID_LENGTH) {
+                        pref.setIcon(android.R.drawable.stat_sys_warning);
+                    } else {
+                        pref.setIcon(null);
+                    }
                     break;
                 case KEY_SWITCH_ONE:
                     final boolean switchOneEnabled = ((SwitchPreference) pref).isChecked();

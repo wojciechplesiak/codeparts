@@ -8,4 +8,8 @@
     <string name="settings_process_id_title">Process ID</string>
     <string name="settings_process_id_message">Exactly certain number of characters:</string>
     <string name="settings_menu_restore_defaults">Restore defaults</string>
+
+    <string name="no_items">No Items</string>
+
+    <string name="canceled">Canceled</string>
 </resources>

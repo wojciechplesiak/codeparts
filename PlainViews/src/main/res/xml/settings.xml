@@ -11,7 +11,7 @@
             android:title="@string/settings_default_number_title"
             android:dialogTitle="@string/settings_default_number_title"
             android:inputType="number"
-            android:defaultValue="8040"/>
+            android:defaultValue="@string/default_phone_number"/>
 
         <SwitchPreference
             android:key="key_switch_one"
@@ -24,7 +24,7 @@
             android:title="@string/settings_process_id_title"
             android:dialogTitle="@string/settings_process_id_title"
             android:dialogMessage="@string/settings_process_id_message"
-            android:defaultValue="abcdefgh"/>
+            android:defaultValue="@string/default_process_id"/>
 
     </PreferenceCategory>
 

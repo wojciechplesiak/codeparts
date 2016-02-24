@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:card_view="http://schemas.android.com/apk/res-auto"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+
+             android:padding="5dp">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_item"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        card_view:cardBackgroundColor="@color/black_54p"
+        card_view:cardCornerRadius="4dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/item_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="CAC"/>
+
+            <ImageView
+                android:id="@+id/item_action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:src="@drawable/ic_delete"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/item_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            tools:text="Date and Time"/>
+
+    </android.support.v7.widget.CardView>
+</FrameLayout>
