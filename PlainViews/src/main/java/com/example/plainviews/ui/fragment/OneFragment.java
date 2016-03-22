@@ -62,7 +62,7 @@ public class OneFragment extends DeskClockFragment {
 		super.onResume();
 
 		final DeskClock activity = (DeskClock) getActivity();
-		if (activity.getSelectedTab() == DeskClock.ALARM_TAB_INDEX) {
+		if (activity.getSelectedTab() == DeskClock.ZETA_TAB_INDEX) {
 			setFabAppearance();
 			setLeftRightButtonAppearance();
 		}

@@ -291,4 +291,17 @@
         <item name="android:clickable">true</item>
     </style>
 
+
+    <!-- ================================================== -->
+
+    <style name="dummy_view_style" parent="small_thin">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:contentDescription">@string/dummy_content</item>
+        <item name="android:text">@string/dummy_content</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@color/white_69p</item>
+        <item name="android:paddingBottom">@dimen/dummy_view_padding</item>
+    </style>
 </resources>

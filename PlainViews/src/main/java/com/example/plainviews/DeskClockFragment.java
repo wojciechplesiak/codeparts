@@ -25,9 +25,9 @@ import android.widget.ImageView;
 
 public class DeskClockFragment extends Fragment {
 
-	protected ImageView mFab;
-	protected ImageButton mLeftButton;
-	protected ImageButton mRightButton;
+	protected ImageView fab;
+	protected ImageButton leftButton;
+	protected ImageButton rightButton;
 
 	public void onPageChanged(int page) {
 		// Do nothing here , only in derived classes
@@ -43,9 +43,10 @@ public class DeskClockFragment extends Fragment {
 		final Activity activity = getActivity();
 		if (activity instanceof DeskClock) {
 			final DeskClock deskClockActivity = (DeskClock) activity;
-			mFab = deskClockActivity.getFab();
-			mLeftButton = deskClockActivity.getLeftButton();
-			mRightButton = deskClockActivity.getRightButton();
+			fab = deskClockActivity.getFab();
+			fab.setVisibility(View.GONE);
+			leftButton = deskClockActivity.getLeftButton();
+			rightButton = deskClockActivity.getRightButton();
 		}
 	}
 

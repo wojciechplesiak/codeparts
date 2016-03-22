@@ -16,8 +16,10 @@
 
 package com.example.plainviews;
 
-import com.example.plainviews.ui.fragment.FooFragment;
+import com.example.plainviews.ui.fragment.EtaFragment;
 import com.example.plainviews.ui.fragment.OneFragment;
+import com.example.plainviews.ui.fragment.ThetaFragment;
+import com.example.plainviews.ui.fragment.ZetaFragment;
 import com.example.plainviews.widget.RtlViewPager;
 
 import android.app.Fragment;
@@ -62,30 +64,30 @@ public class DeskClock extends BaseActivity {
 	private static final int[] TAB_COLORS = new int[]{R.color.tab1_color, R.color.tab2_color,
 			R.color.tab3_color, R.color.tab4_color};
 
-	public static final int ALARM_TAB_INDEX = 0;
-	public static final int CLOCK_TAB_INDEX = 1;
-	public static final int TIMER_TAB_INDEX = 2;
-	public static final int STOPWATCH_TAB_INDEX = 3;
+	public static final int ZETA_TAB_INDEX = 0;
+	public static final int ETA_TAB_INDEX = 1;
+	public static final int THETA_TAB_INDEX = 2;
+	public static final int IOTA_TAB_INDEX = 3;
 
-	private TabLayout mTabLayout;
-	private Menu mMenu;
-	private RtlViewPager mViewPager;
-	private ImageView mFab;
-	private ImageButton mLeftButton;
-	private ImageButton mRightButton;
+	private TabLayout tabLayout;
+	private Menu menu;
+	private RtlViewPager viewPager;
+	private ImageView fab;
+	private ImageButton leftButton;
+	private ImageButton rightButton;
 
-	private TabsAdapter mTabsAdapter;
-	private int mSelectedTab;
-	private boolean mActivityResumed;
+	private TabsAdapter tabsAdapter;
+	private int selectedTab;
+	private boolean activityResumed;
 
 	@Override
 	protected void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 
 		if (icicle != null) {
-			mSelectedTab = icicle.getInt(KEY_SELECTED_TAB, ALARM_TAB_INDEX);
+			selectedTab = icicle.getInt(KEY_SELECTED_TAB, ZETA_TAB_INDEX);
 		} else {
-			mSelectedTab = ALARM_TAB_INDEX;
+			selectedTab = ZETA_TAB_INDEX;
 		}
 
 		initViews();
@@ -94,12 +96,12 @@ public class DeskClock extends BaseActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		mActivityResumed = true;
+		activityResumed = true;
 	}
 
 	@Override
 	public void onPause() {
-		mActivityResumed = false;
+		activityResumed = false;
 //        Utils.showInUseNotifications(this);
 		super.onPause();
 	}
@@ -117,35 +119,35 @@ public class DeskClock extends BaseActivity {
 	private void initViews() {
 		setContentView(R.layout.desk_clock);
 		setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
-		mTabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
-		mFab = (ImageView) findViewById(R.id.fab);
-		mLeftButton = (ImageButton) findViewById(R.id.left_button);
-		mRightButton = (ImageButton) findViewById(R.id.right_button);
-		if (mTabsAdapter == null) {
-			mViewPager = (RtlViewPager) findViewById(R.id.desk_clock_pager);
+		tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+		fab = (ImageView) findViewById(R.id.fab);
+		leftButton = (ImageButton) findViewById(R.id.left_button);
+		rightButton = (ImageButton) findViewById(R.id.right_button);
+		if (tabsAdapter == null) {
+			viewPager = (RtlViewPager) findViewById(R.id.desk_clock_pager);
 			// Keep all four tabs to minimize jank.
-			mViewPager.setOffscreenPageLimit(3);
+			viewPager.setOffscreenPageLimit(3);
 			// Set Accessibility Delegate to null so ViewPager doesn't intercept movements and
 			// prevent the fab from being selected.
-			mViewPager.setAccessibilityDelegate(null);
-			mTabsAdapter = new TabsAdapter(this, mViewPager);
+			viewPager.setAccessibilityDelegate(null);
+			tabsAdapter = new TabsAdapter(this, viewPager);
 			createTabs();
-			mTabLayout.setOnTabSelectedListener(new ViewPagerOnTabSelectedListener(mViewPager));
+			tabLayout.setOnTabSelectedListener(new ViewPagerOnTabSelectedListener(viewPager));
 		}
 
-		mFab.setOnClickListener(new OnClickListener() {
+		fab.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				getSelectedFragment().onFabClick(view);
 			}
 		});
-		mLeftButton.setOnClickListener(new OnClickListener() {
+		leftButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				getSelectedFragment().onLeftButtonClick(view);
 			}
 		});
-		mRightButton.setOnClickListener(new OnClickListener() {
+		rightButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				getSelectedFragment().onRightButtonClick(view);
@@ -155,43 +157,43 @@ public class DeskClock extends BaseActivity {
 
 	@VisibleForTesting
 	DeskClockFragment getSelectedFragment() {
-		return (DeskClockFragment) mTabsAdapter.getItem(mSelectedTab);
+		return (DeskClockFragment) tabsAdapter.getItem(selectedTab);
 	}
 
 	private void createTabs() {
-		final TabLayout.Tab alarmTab = mTabLayout.newTab();
+		final TabLayout.Tab alarmTab = tabLayout.newTab();
 		alarmTab.setIcon(R.drawable.ic_tab_alarm).setContentDescription(R.string.menu_alarm);
-		mTabsAdapter.addTab(alarmTab, AlarmClockFragment.class, ALARM_TAB_INDEX);
+		tabsAdapter.addTab(alarmTab, ZetaFragment.class, ZETA_TAB_INDEX);
 
-		final Tab clockTab = mTabLayout.newTab();
+		final Tab clockTab = tabLayout.newTab();
 		clockTab.setIcon(R.drawable.ic_tab_clock).setContentDescription(R.string.menu_clock);
-		mTabsAdapter.addTab(clockTab, ClockFragment.class, CLOCK_TAB_INDEX);
+		tabsAdapter.addTab(clockTab, EtaFragment.class, ETA_TAB_INDEX);
 
-		final Tab timerTab = mTabLayout.newTab();
+		final Tab timerTab = tabLayout.newTab();
 		timerTab.setIcon(R.drawable.ic_tab_timer).setContentDescription(R.string.menu_timer);
-		mTabsAdapter.addTab(timerTab, FooFragment.class, TIMER_TAB_INDEX);
+		tabsAdapter.addTab(timerTab, ThetaFragment.class, THETA_TAB_INDEX);
 
-		final Tab stopwatchTab = mTabLayout.newTab();
+		final Tab stopwatchTab = tabLayout.newTab();
 		stopwatchTab.setIcon(R.drawable.ic_tab_stopwatch)
 				.setContentDescription(R.string.menu_stopwatch);
-		mTabsAdapter.addTab(stopwatchTab, OneFragment.class, STOPWATCH_TAB_INDEX);
+		tabsAdapter.addTab(stopwatchTab, OneFragment.class, IOTA_TAB_INDEX);
 
-		mTabLayout.getTabAt(mSelectedTab).select();
-		mViewPager.setCurrentItem(mSelectedTab);
-		mTabsAdapter.notifySelectedPage(mSelectedTab);
+		tabLayout.getTabAt(selectedTab).select();
+		viewPager.setCurrentItem(selectedTab);
+		tabsAdapter.notifySelectedPage(selectedTab);
 	}
 
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		outState.putInt(KEY_SELECTED_TAB, mTabLayout.getSelectedTabPosition());
+		outState.putInt(KEY_SELECTED_TAB, tabLayout.getSelectedTabPosition());
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// We only want to show it as a menu in landscape, and only for clock/alarm fragment.
-		mMenu = menu;
+		this.menu = menu;
 		// Clear the menu so that it doesn't get duplicate items in case onCreateOptionsMenu
 		// was called multiple times.
 		menu.clear();
@@ -210,7 +212,7 @@ public class DeskClock extends BaseActivity {
 	private void updateMenu(Menu menu) {
 		// Hide "lights out" for timer.
 		MenuItem nightMode = menu.findItem(R.id.menu_item_night_mode);
-		if (mTabLayout.getSelectedTabPosition() == CLOCK_TAB_INDEX) {
+		if (tabLayout.getSelectedTabPosition() == ETA_TAB_INDEX) {
 			nightMode.setVisible(true);
 		} else {
 			nightMode.setVisible(false);
@@ -249,14 +251,14 @@ public class DeskClock extends BaseActivity {
 	}
 
 	public void registerPageChangedListener(DeskClockFragment frag) {
-		if (mTabsAdapter != null) {
-			mTabsAdapter.registerPageChangedListener(frag);
+		if (tabsAdapter != null) {
+			tabsAdapter.registerPageChangedListener(frag);
 		}
 	}
 
 	public void unregisterPageChangedListener(DeskClockFragment frag) {
-		if (mTabsAdapter != null) {
-			mTabsAdapter.unregisterPageChangedListener(frag);
+		if (tabsAdapter != null) {
+			tabsAdapter.unregisterPageChangedListener(frag);
 		}
 	}
 
@@ -298,7 +300,7 @@ public class DeskClock extends BaseActivity {
 
 		@Override
 		public Object instantiateItem(ViewGroup container, int position) {
-			return super.instantiateItem(container, mViewPager.getRtlAwareIndex(position));
+			return super.instantiateItem(container, viewPager.getRtlAwareIndex(position));
 		}
 
 		@Override
@@ -331,7 +333,7 @@ public class DeskClock extends BaseActivity {
 		public void addTab(TabLayout.Tab tab, Class<?> clss, int position) {
 			TabInfo info = new TabInfo(clss, position);
 			mTabs.add(info);
-			mTabLayout.addTab(tab);
+			tabLayout.addTab(tab);
 			notifyDataSetChanged();
 		}
 
@@ -344,30 +346,30 @@ public class DeskClock extends BaseActivity {
 		public void onPageSelected(int position) {
 			// Set the page before doing the menu so that onCreateOptionsMenu knows what page it
 			// is.
-			mTabLayout.getTabAt(position).select();
+			tabLayout.getTabAt(position).select();
 			notifyPageChanged(position);
 			setBackgroundColor(getResources().getColor(TAB_COLORS[position]), true);
 
 			// Only show the overflow menu for alarm and world clock.
-			if (mMenu != null) {
+			if (menu != null) {
 				// Make sure the menu's been initialized.
-				mMenu.setGroupVisible(R.id.menu_items, true);
-				onCreateOptionsMenu(mMenu);
+				menu.setGroupVisible(R.id.menu_items, true);
+				onCreateOptionsMenu(menu);
 			}
-			mSelectedTab = position;
+			selectedTab = position;
 
-			if (mActivityResumed) {
-				switch (mSelectedTab) {
-					case ALARM_TAB_INDEX:
+			if (activityResumed) {
+				switch (selectedTab) {
+					case ZETA_TAB_INDEX:
 //                        Events.sendAlarmEvent(R.string.action_show, R.string.label_deskclock);
 						break;
-					case CLOCK_TAB_INDEX:
+					case ETA_TAB_INDEX:
 //                        Events.sendClockEvent(R.string.action_show, R.string.label_deskclock);
 						break;
-					case TIMER_TAB_INDEX:
+					case THETA_TAB_INDEX:
 //                        Events.sendTimerEvent(R.string.action_show, R.string.label_deskclock);
 						break;
-					case STOPWATCH_TAB_INDEX:
+					case IOTA_TAB_INDEX:
 //                        Events.sendStopwatchEvent(R.string.action_show, R.string.label_deskclock);
 						break;
 				}
@@ -408,7 +410,7 @@ public class DeskClock extends BaseActivity {
 			}
 			// Since registering a listener by the fragment is done sometimes after the page
 			// was already changed, make sure the fragment gets the current page
-			frag.onPageChanged(mTabLayout.getSelectedTabPosition());
+			frag.onPageChanged(tabLayout.getSelectedTabPosition());
 		}
 
 		public void unregisterPageChangedListener(DeskClockFragment frag) {
@@ -418,18 +420,18 @@ public class DeskClock extends BaseActivity {
 	}
 
 	public int getSelectedTab() {
-		return mSelectedTab;
+		return selectedTab;
 	}
 
 	public ImageView getFab() {
-		return mFab;
+		return fab;
 	}
 
 	public ImageButton getLeftButton() {
-		return mLeftButton;
+		return leftButton;
 	}
 
 	public ImageButton getRightButton() {
-		return mRightButton;
+		return rightButton;
 	}
 }

@@ -30,53 +30,59 @@ import android.view.ViewGroup;
  */
 public final class EmptyViewController {
 
-    private static final int ANIMATION_DURATION = 300;
-    private static final boolean USE_TRANSITION_FRAMEWORK = Utils.isLOrLater();
+	private static final int ANIMATION_DURATION = 300;
 
-    private final Transition mEmptyViewTransition;
-    private final ViewGroup mMainLayout;
-    private final View mContentView;
-    private final View mEmptyView;
-    private boolean mIsEmpty;
+	private final Transition emptyViewTransition;
+	private final ViewGroup mainLayout;
+	private final View contentView;
+	private final View emptyView;
+	private boolean isEmpty;
 
-    /**
-     * Constructor of the controller.
-     *
-     * @param contentView  The view that should be displayed when empty view is hidden.
-     * @param emptyView The view that should be displayed when main view is empty.
-     */
-    public EmptyViewController(ViewGroup mainLayout, View contentView, View emptyView) {
-        mMainLayout = mainLayout;
-        mContentView = contentView;
-        mEmptyView = emptyView;
-        if (USE_TRANSITION_FRAMEWORK) {
-            mEmptyViewTransition = new TransitionSet()
-                    .setOrdering(TransitionSet.ORDERING_SEQUENTIAL)
-                    .addTarget(contentView)
-                    .addTarget(emptyView)
-                    .addTransition(new Fade(Fade.OUT))
-                    .addTransition(new Fade(Fade.IN))
-                    .setDuration(ANIMATION_DURATION);
-        } else {
-            mEmptyViewTransition = null;
-        }
-    }
+	/**
+	 * Constructor of the controller.
+	 *
+	 * @param contentView The view that should be displayed when empty view is hidden.
+	 * @param emptyView   The view that should be displayed when main view is empty.
+	 */
+	public EmptyViewController(ViewGroup mainLayout, View contentView, View emptyView) {
+		this.mainLayout = mainLayout;
+		this.contentView = contentView;
+		this.emptyView = emptyView;
+		if (Utils.isLOrLater()) {
+			emptyViewTransition = new TransitionSet()
+					.setOrdering(TransitionSet.ORDERING_SEQUENTIAL)
+					.addTarget(contentView)
+					.addTarget(emptyView)
+					.addTransition(new Fade(Fade.OUT))
+					.addTransition(new Fade(Fade.IN))
+					.setDuration(ANIMATION_DURATION);
+		} else {
+			emptyViewTransition = null;
+		}
+	}
 
-    /**
-     * Sets the state for the controller. If it's empty, it will display the empty view.
-     *
-     * @param isEmpty Whether or not the controller should transition into empty state.
-     */
-    public void setEmpty(boolean isEmpty) {
-        if (mIsEmpty == isEmpty) {
-            return;
-        }
-        mIsEmpty = isEmpty;
-        // State changed, perform transition.
-        if (USE_TRANSITION_FRAMEWORK) {
-            TransitionManager.beginDelayedTransition(mMainLayout, mEmptyViewTransition);
-        }
-        mEmptyView.setVisibility(mIsEmpty ? View.VISIBLE : View.GONE);
-        mContentView.setVisibility(mIsEmpty ? View.GONE : View.VISIBLE);
-    }
+	/**
+	 * Sets the state for the controller. If it's empty, it will display the empty view.
+	 *
+	 * @param isEmpty Whether or not the controller should transition into empty state.
+	 */
+	public void setEmpty(boolean isEmpty) {
+		if (this.isEmpty == isEmpty) {
+			return;
+		}
+		this.isEmpty = isEmpty;
+		// State changed, perform transition.
+		if (Utils.isLOrLater()) {
+			TransitionManager.beginDelayedTransition(mainLayout, emptyViewTransition);
+		}
+		emptyView.setVisibility(this.isEmpty ? View.VISIBLE : View.GONE);
+		contentView.setVisibility(this.isEmpty ? View.GONE : View.VISIBLE);
+	}
+
+	/**
+	 * @return state of the controller.
+	 */
+	public boolean isEmpty() {
+		return isEmpty;
+	}
 }

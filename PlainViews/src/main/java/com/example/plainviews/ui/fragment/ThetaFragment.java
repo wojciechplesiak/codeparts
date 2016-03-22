@@ -12,14 +12,12 @@ import android.view.ViewGroup;
 /**
  *
  */
-public class FooFragment extends DeskClockFragment {
-
-	private static final int SPAN_COUNT = 2;
+public class ThetaFragment extends DeskClockFragment {
 
 	/**
 	 * The public no-arg constructor required by all fragments.
 	 */
-	public FooFragment() {
+	public ThetaFragment() {
 	}
 
 	@Override
@@ -30,14 +28,20 @@ public class FooFragment extends DeskClockFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedState) {
 		// Inflate the layout for this fragment
-		final View v = inflater.inflate(R.layout.one_fragment, container, false);
+		final View v = inflater.inflate(R.layout.theta_fragment, container, false);
 
 		ViewGroup mainLayout = (ViewGroup) v.findViewById(R.id.main);
 
-		EmptyViewController emptyViewController = new EmptyViewController(mainLayout, v
-				.findViewById(R.id
-				.items_frame), v.findViewById(R.id.one_empty_view));
+		final EmptyViewController emptyViewController = new EmptyViewController(mainLayout, v
+				.findViewById(R.id.content_frame), v.findViewById(R.id.one_empty_view));
 		emptyViewController.setEmpty(true);
+
+		mainLayout.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				emptyViewController.setEmpty(!emptyViewController.isEmpty());
+			}
+		});
 
 		return v;
 	}

@@ -206,4 +206,7 @@
     <!-- Floating action button style -->
     <dimen name="fab_margin">0dp</dimen>
     <dimen name="fab_elevation">8dp</dimen>
+
+    <!-- ============================================================ -->
+    <dimen name="dummy_view_padding">88dip</dimen>
 </resources>
