@@ -16,6 +16,7 @@
 
 package com.example.plainviews;
 
+import com.example.plainviews.ui.fragment.FooFragment;
 import com.example.plainviews.ui.fragment.OneFragment;
 import com.example.plainviews.widget.RtlViewPager;
 
@@ -168,7 +169,7 @@ public class DeskClock extends BaseActivity {
 
 		final Tab timerTab = mTabLayout.newTab();
 		timerTab.setIcon(R.drawable.ic_tab_timer).setContentDescription(R.string.menu_timer);
-		mTabsAdapter.addTab(timerTab, TimerFragment.class, TIMER_TAB_INDEX);
+		mTabsAdapter.addTab(timerTab, FooFragment.class, TIMER_TAB_INDEX);
 
 		final Tab stopwatchTab = mTabLayout.newTab();
 		stopwatchTab.setIcon(R.drawable.ic_tab_stopwatch)
@@ -309,10 +310,6 @@ public class DeskClock extends BaseActivity {
 			if (fragment == null) {
 				TabInfo info = mTabs.get(position);
 				fragment = Fragment.instantiate(mContext, info.clss.getName(), info.args);
-				if (fragment instanceof TimerFragment) {
-					((TimerFragment) fragment).setFabAppearance();
-					((TimerFragment) fragment).setLeftRightButtonAppearance();
-				}
 			}
 			return fragment;
 		}
