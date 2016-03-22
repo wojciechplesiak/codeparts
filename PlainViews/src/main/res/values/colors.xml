@@ -43,12 +43,15 @@
 
     <color name="tab1_color">#145061</color>
     <color name="tab2_color">#5B7500</color>
-    <color name="tab3_color">#A23445</color>
-    <color name="tab4_color">#DB9607</color>
-    <color name="tab5_color">#CC4A00</color>
+    <color name="tab3_color">#751C5F</color>
+    <color name="tab4_color">#825807</color>
 
     <color name="tab6_color">#186E61</color>
     <color name="tab7_color">#8C3A1F</color>
+    <color name="tab8_color">#DB9607</color>
+    <color name="tab9_color">#CC4A00</color>
+    <color name="tab10_color">#A23445</color>
+    <color name="error_color">#7e1a15</color>
 
     <color name="anthracite">#29323B</color>
 

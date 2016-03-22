@@ -16,6 +16,8 @@
 
 package com.example.plainviews;
 
+import com.example.plainviews.widget.DullView;
+
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.content.BroadcastReceiver;
@@ -48,6 +50,7 @@ public class ClockFragment extends DeskClockFragment {
     private ListView mCityList;
     private String mDateFormat;
     private String mDateFormatForAccessibility;
+    private DullView mDullView;
 
     private final Handler mHandler = new Handler();
 
@@ -70,6 +73,8 @@ public class ClockFragment extends DeskClockFragment {
         final OnTouchListener startScreenSaverListener = new StartScreenSaverListener();
         final View footerView = inflater.inflate(R.layout.blank_footer_view, mCityList, false);
         final View fragmentView = inflater.inflate(R.layout.clock_fragment, container, false);
+
+        mDullView = (DullView) fragmentView.findViewById(R.id.dull);
 
         mCityAdapter = new SelectedCitiesAdapter(getActivity());
 
@@ -145,6 +150,8 @@ public class ClockFragment extends DeskClockFragment {
             final Uri uri = Settings.System.getUriFor(Settings.System.NEXT_ALARM_FORMATTED);
             activity.getContentResolver().registerContentObserver(uri, false, mAlarmObserver);
         }
+
+        mDullView.reveal();
     }
 
     @Override

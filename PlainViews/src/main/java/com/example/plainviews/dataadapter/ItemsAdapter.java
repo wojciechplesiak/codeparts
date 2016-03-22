@@ -16,15 +16,14 @@ import java.util.List;
  */
 public final class ItemsAdapter extends RecyclerView.Adapter<ItemsViewHolder> {
 
-	private final Context mContext;
-	private final LayoutInflater mInflater;
+	private final Context context;
+	private final LayoutInflater inflater;
 
 	List<String> items = new ArrayList<>();
 
 	public ItemsAdapter(Context context) {
-		mContext = context;
-		mInflater = LayoutInflater.from(context);
-
+		this.context = context;
+		inflater = LayoutInflater.from(context);
 		setHasStableIds(true);
 
 		addMockItems();
@@ -38,9 +37,8 @@ public final class ItemsAdapter extends RecyclerView.Adapter<ItemsViewHolder> {
 
 	@Override
 	public ItemsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-		final View v = mInflater.inflate(viewType, parent, false /* attachToRoot */);
+		final View v = inflater.inflate(viewType, parent, false /* attachToRoot */);
 		return new ItemsViewHolder(v);
-
 	}
 
 	@Override
@@ -56,7 +54,7 @@ public final class ItemsAdapter extends RecyclerView.Adapter<ItemsViewHolder> {
 
 	@Override
 	public void onBindViewHolder(ItemsViewHolder viewHolder, int position) {
-		viewHolder.bindItem(mContext, items.get(position));
+		viewHolder.bindItem(context, items.get(position));
 	}
 
 	@Override

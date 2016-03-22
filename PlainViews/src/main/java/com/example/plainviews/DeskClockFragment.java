@@ -25,52 +25,52 @@ import android.widget.ImageView;
 
 public class DeskClockFragment extends Fragment {
 
-    protected ImageView mFab;
-    protected ImageButton mLeftButton;
-    protected ImageButton mRightButton;
+	protected ImageView mFab;
+	protected ImageButton mLeftButton;
+	protected ImageButton mRightButton;
 
-    public void onPageChanged(int page) {
-        // Do nothing here , only in derived classes
-    }
+	public void onPageChanged(int page) {
+		// Do nothing here , only in derived classes
+	}
 
-    public void onFabClick(View view){
-        // Do nothing here , only in derived classes
-    }
+	public void onFabClick(View view) {
+		// Do nothing here , only in derived classes
+	}
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        final Activity activity = getActivity();
-        if (activity instanceof DeskClock) {
-            final DeskClock deskClockActivity = (DeskClock) activity;
-            mFab = deskClockActivity.getFab();
-            mLeftButton = deskClockActivity.getLeftButton();
-            mRightButton = deskClockActivity.getRightButton();
-        }
-    }
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		final Activity activity = getActivity();
+		if (activity instanceof DeskClock) {
+			final DeskClock deskClockActivity = (DeskClock) activity;
+			mFab = deskClockActivity.getFab();
+			mLeftButton = deskClockActivity.getLeftButton();
+			mRightButton = deskClockActivity.getRightButton();
+		}
+	}
 
-    public void setFabAppearance() {
-        // Do nothing here , only in derived classes
-    }
+	public void setFabAppearance() {
+		// Do nothing here , only in derived classes
+	}
 
-    public void setLeftRightButtonAppearance() {
-        // Do nothing here , only in derived classes
-    }
+	public void setLeftRightButtonAppearance() {
+		// Do nothing here , only in derived classes
+	}
 
-    public void onLeftButtonClick(View view) {
-        // Do nothing here , only in derived classes
-    }
+	public void onLeftButtonClick(View view) {
+		// Do nothing here , only in derived classes
+	}
 
-    public void onRightButtonClick(View view) {
-        // Do nothing here , only in derived classes
-    }
+	public void onRightButtonClick(View view) {
+		// Do nothing here , only in derived classes
+	}
 
-    protected final DeskClock getDeskClock() {
-        return (DeskClock) getActivity();
-    }
+	protected final DeskClock getDeskClock() {
+		return (DeskClock) getActivity();
+	}
 
-    protected final int getSelectedTab() {
-        final DeskClock deskClock = getDeskClock();
-        return deskClock == null ? -1 : deskClock.getSelectedTab();
-    }
+	protected final int getSelectedTab() {
+		final DeskClock deskClock = getDeskClock();
+		return deskClock == null ? -1 : deskClock.getSelectedTab();
+	}
 }

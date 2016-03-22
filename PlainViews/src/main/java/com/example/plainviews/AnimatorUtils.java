@@ -37,8 +37,8 @@ public class AnimatorUtils {
 	private static final TimeInterpolator REVEAL_INTERPOLATOR =
 			PathInterpolatorCompat.create(0.0f, 0.0f, 0.2f, 1.0f);
 
-	private static final int REVEAL_VIEW_FADE_IN_DURATION_MILLIS = 1000;
-	private static final int REVEAL_VIEW_FADE_OUT_DURATION_MILLIS = 500;
+	private static final int REVEAL_VIEW_FADE_IN_DURATION_MILLIS = 500;
+	private static final int REVEAL_VIEW_FADE_OUT_DURATION_MILLIS = 300;
 	private static final int REVEAL_VIEW_DISMISS_DELAY_MILLIS = 2000;
 
 	private static final String EMPTY = "";
@@ -162,7 +162,7 @@ public class AnimatorUtils {
 	 * @param revealColor
 	 * @return a builder for Reveal-Alert animation.
 	 */
-	public static RevealBuilder createReveal(@NonNull final Context context, @NonNull final View
+	public static RevealBuilder createReveal(@NonNull final Context context, final View
 			source, final int revealColor) {
 		return new RevealBuilder(context, source, revealColor);
 	}
@@ -177,13 +177,17 @@ public class AnimatorUtils {
 	 */
 	public static class RevealBuilder {
 
+		private static int NO_SOURCE_OFFSET = 5;
+
 		private Context context;
 		private ViewGroup containerView;
 		private View source;
 		private int revealColor;
 		private String title;
 		private String info;
+		private String canceledMessage;
 		private boolean cancelable;
+		private boolean dismissible;
 		private OnRevealEndListener onRevealEndListener;
 
 		private final Handler mHandler = new Handler();
@@ -194,10 +198,10 @@ public class AnimatorUtils {
 			}
 		};
 
-		private RevealBuilder(@NonNull final Context context, @NonNull final View source, final
+		private RevealBuilder(@NonNull final Context context, final View source, final
 		int revealColor) {
 			this.context = checkNotNull(context);
-			this.source = checkNotNull(source);
+			this.source = source;
 			this.revealColor = revealColor;
 		}
 
@@ -225,8 +229,24 @@ public class AnimatorUtils {
 			return this;
 		}
 
+		/**
+		 * Set Glimpse cancellable, which will displayed custom canceled message.
+		 *
+		 * @param canceledMessage message to be displayed on Glimpse when it's cancelled by user
+		 */
+		public RevealBuilder setCancelableWithMessage(String canceledMessage) {
+			this.cancelable = true;
+			this.canceledMessage = canceledMessage;
+			return this;
+		}
+
 		public RevealBuilder setCancelable(boolean cancelable) {
 			this.cancelable = cancelable;
+			return this;
+		}
+
+		public RevealBuilder setDismissible(boolean dismissible) {
+			this.dismissible = dismissible;
 			return this;
 		}
 
@@ -240,8 +260,7 @@ public class AnimatorUtils {
 				containerView = obtainContainerView();
 			}
 
-			final Rect sourceBounds = new Rect(0, 0, source.getHeight(), source.getWidth());
-			containerView.offsetDescendantRectToMyCoords(source, sourceBounds);
+			final Rect sourceBounds = prepareSourceBounds();
 
 			final int centerX = sourceBounds.centerX();
 			final int centerY = sourceBounds.centerY();
@@ -252,18 +271,73 @@ public class AnimatorUtils {
 			final float startRadius = Math.max(sourceBounds.width(), sourceBounds.height()) / 2.0f;
 			final float endRadius = (float) Math.sqrt(xMax * xMax + yMax * yMax);
 
+			final View alertView = prepareAlertView();
+			final CircleView revealView = prepareRevealView(centerX, centerY);
+
+			final Animator revealAnimator = prepareRevealAnimator(revealView, alertView,
+					startRadius, endRadius);
+
+			final ValueAnimator fadeAnimator = prepareFadeAnimation(revealView);
+
+			final AnimatorSet alertAnimator = new AnimatorSet();
+			alertAnimator.play(revealAnimator).before(fadeAnimator);
+			alertAnimator.addListener(new AnimatorListenerAdapter() {
+				@Override
+				public void onAnimationEnd(Animator animator) {
+					mHandler.postDelayed(new Runnable() {
+						@Override
+						public void run() {
+							prepareFadeAnimation(alertView).start();
+						}
+					}, REVEAL_VIEW_DISMISS_DELAY_MILLIS);
+				}
+			});
+
+			if (cancelable) {
+				cancelViewsOnClick(revealView, alertView, alertAnimator);
+			}
+
+			if (dismissible) {
+				dismissViewOnClick(alertView, alertAnimator);
+			}
+
+			return alertAnimator;
+		}
+
+		private Rect prepareSourceBounds() {
+			final Rect sourceBounds;
+			if (source != null) {
+				sourceBounds = new Rect(0, 0, source.getHeight(), source.getWidth());
+				containerView.offsetDescendantRectToMyCoords(source, sourceBounds);
+			} else {
+				sourceBounds = new Rect(containerView.getWidth() / 2 - NO_SOURCE_OFFSET,
+						containerView.getHeight() / 2 - NO_SOURCE_OFFSET, containerView.getWidth
+						() / 2 + NO_SOURCE_OFFSET, containerView.getHeight() / 2 +
+						NO_SOURCE_OFFSET);
+			}
+			return sourceBounds;
+		}
+
+		private View prepareAlertView() {
 			final View alertView = LayoutInflater.from(context).inflate(R.layout.one_reveal_view,
 					null);
 			alertView.setBackgroundColor(revealColor);
 			alertView.setOnClickListener(onClickAbsorber);
 			containerView.addView(alertView);
+			return alertView;
+		}
 
+		private CircleView prepareRevealView(int centerX, int centerY) {
 			final CircleView revealView = new CircleView(context)
 					.setCenterX(centerX)
 					.setCenterY(centerY)
 					.setFillColor(revealColor);
 			containerView.addView(revealView);
+			return revealView;
+		}
 
+		private Animator prepareRevealAnimator(final CircleView revealView, final View alertView, float
+				startRadius, float endRadius) {
 			final Animator revealAnimator = ObjectAnimator.ofFloat(revealView, CircleView
 					.RADIUS, startRadius, endRadius);
 			revealAnimator.setDuration(REVEAL_VIEW_FADE_IN_DURATION_MILLIS);
@@ -284,45 +358,46 @@ public class AnimatorUtils {
 					}
 				}
 			});
+			return revealAnimator;
+		}
 
-			final ValueAnimator fadeAnimator = getFadeAnimation(revealView);
-
-			final AnimatorSet alertAnimator = new AnimatorSet();
-			alertAnimator.play(revealAnimator).before(fadeAnimator);
-			alertAnimator.addListener(new AnimatorListenerAdapter() {
-				@Override
-				public void onAnimationEnd(Animator animator) {
-					mHandler.postDelayed(new Runnable() {
-						@Override
-						public void run() {
-							getFadeAnimation(alertView).start();
-						}
-					}, REVEAL_VIEW_DISMISS_DELAY_MILLIS);
-				}
-			});
-
+		private void cancelViewsOnClick(final View revealView, final View alertView, final
+		AnimatorSet alertAnimator) {
 			revealView.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					if (!cancelable) {
-						return;
-					}
 					alertAnimator.cancel();
-					setText(alertView, R.id.reveal_view_title, context.getString(R.string.canceled));
+
+					setText(alertView, R.id.reveal_view_title, getCancelledMessage());
 					setText(alertView, R.id.reveal_view_info, EMPTY);
 					revealView.setVisibility(View.GONE);
 					alertView.setVisibility(View.VISIBLE);
 					mHandler.postDelayed(new Runnable() {
 						@Override
 						public void run() {
-							alertAnimator.play(getFadeAnimation(alertView));
+							alertAnimator.play(prepareFadeAnimation(alertView));
 							alertAnimator.start();
 						}
 					}, REVEAL_VIEW_DISMISS_DELAY_MILLIS);
+					containerView.removeView(revealView);
+				}
+
+				private String getCancelledMessage() {
+					return TextUtils.isEmpty(canceledMessage) ? context.getString(R.string
+							.canceled) : canceledMessage;
 				}
 			});
+		}
 
-			return alertAnimator;
+		private void dismissViewOnClick(final View view, final AnimatorSet alertAnimator) {
+			view.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					alertAnimator.cancel();
+					alertAnimator.play(prepareFadeAnimation(view));
+					alertAnimator.start();
+				}
+			});
 		}
 
 		private ViewGroup obtainContainerView() {
@@ -334,7 +409,7 @@ public class AnimatorUtils {
 					" you must provide Activity context.");
 		}
 
-		private ValueAnimator getFadeAnimation(final View view) {
+		private ValueAnimator prepareFadeAnimation(final View view) {
 			final ValueAnimator fadeAnimator = ObjectAnimator.ofFloat(view, View.ALPHA, 0.0f);
 			fadeAnimator.setDuration(REVEAL_VIEW_FADE_OUT_DURATION_MILLIS);
 			fadeAnimator.addListener(new AnimatorListenerAdapter() {

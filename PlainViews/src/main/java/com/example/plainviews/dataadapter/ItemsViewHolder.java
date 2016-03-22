@@ -2,6 +2,7 @@ package com.example.plainviews.dataadapter;
 
 import com.example.plainviews.AnimatorUtils;
 import com.example.plainviews.R;
+import com.example.plainviews.ui.glimpse.Glimpse;
 
 import android.content.Context;
 import android.support.v7.widget.PopupMenu;
@@ -65,6 +66,12 @@ public class ItemsViewHolder extends RecyclerView.ViewHolder implements View.OnC
 						.build()
 						.start();
 				return true;
+			}
+		});
+		cardItem.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Glimpse.error(context, "Something went wrong").show();
 			}
 		});
 	}

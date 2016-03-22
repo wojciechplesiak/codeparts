@@ -13,6 +13,19 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+<com.example.plainviews.widget.DullView
+    android:id="@+id/dull"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="32dp" />
 
 <ListView
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -22,3 +35,5 @@
     android:clickable="false"
     android:paddingEnd="@dimen/clock_side_padding_reduced"
     android:paddingStart="@dimen/clock_side_padding" />
+
+</LinearLayout>

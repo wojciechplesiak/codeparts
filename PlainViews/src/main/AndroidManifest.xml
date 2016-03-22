@@ -15,6 +15,7 @@
                   android:label="@string/app_label"
                   android:theme="@style/DeskClockTheme"
                   android:icon="@mipmap/ic_launcher"
+                  android:screenOrientation="portrait"
                   android:launchMode="singleTask">
 
             <intent-filter>
@@ -27,9 +28,9 @@
         <activity android:name=".SettingsActivity"
                   android:label="@string/settings"
                   android:theme="@style/SettingsTheme"
+                  android:screenOrientation="portrait"
                   android:taskAffinity=""
-                  android:excludeFromRecents="true"
-            >
+                  android:excludeFromRecents="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>

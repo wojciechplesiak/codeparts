@@ -3,7 +3,6 @@ package com.example.plainviews.ui.fragment;
 import com.example.plainviews.DeskClock;
 import com.example.plainviews.DeskClockFragment;
 import com.example.plainviews.R;
-import com.example.plainviews.ToastMaster;
 import com.example.plainviews.dataadapter.ItemsAdapter;
 import com.example.plainviews.widget.EmptyViewController;
 
@@ -22,11 +21,6 @@ public class OneFragment extends DeskClockFragment {
 
 	private static final int SPAN_COUNT = 2;
 
-	private ViewGroup mMainLayout;
-	private RecyclerView mRecyclerView;
-
-	private EmptyViewController mEmptyViewController;
-
 	/**
 	 * The public no-arg constructor required by all fragments.
 	 */
@@ -43,23 +37,24 @@ public class OneFragment extends DeskClockFragment {
 		// Inflate the layout for this fragment
 		final View v = inflater.inflate(R.layout.one_fragment, container, false);
 
-		mMainLayout = (ViewGroup) v.findViewById(R.id.main);
+		ViewGroup mainLayout = (ViewGroup) v.findViewById(R.id.main);
 
 		setupRecyclerView(v);
 
-		mEmptyViewController = new EmptyViewController(mMainLayout, v.findViewById(R.id
+		EmptyViewController emptyViewController = new EmptyViewController(mainLayout, v
+				.findViewById(R.id
 				.items_frame), v.findViewById(R.id.one_empty_view));
-//		mEmptyViewController.setEmpty(true);
+		emptyViewController.setEmpty(false);
 
 		return v;
 	}
 
 	private void setupRecyclerView(final View v) {
-		mRecyclerView = (RecyclerView) v.findViewById(R.id.items_recycler_view);
-		mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(SPAN_COUNT,
+		RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.items_recycler_view);
+		recyclerView.setLayoutManager(new StaggeredGridLayoutManager(SPAN_COUNT,
 				StaggeredGridLayoutManager.VERTICAL));
-		mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-		mRecyclerView.setAdapter(new ItemsAdapter(getActivity()));
+		recyclerView.setItemAnimator(new DefaultItemAnimator());
+		recyclerView.setAdapter(new ItemsAdapter(getActivity()));
 	}
 
 	@Override
@@ -71,21 +66,5 @@ public class OneFragment extends DeskClockFragment {
 			setFabAppearance();
 			setLeftRightButtonAppearance();
 		}
-	}
-
-	@Override
-	public void onSaveInstanceState(Bundle outState) {
-		super.onSaveInstanceState(outState);
-	}
-
-	@Override
-	public void onDestroy() {
-		super.onDestroy();
-		ToastMaster.cancelToast();
-	}
-
-	@Override
-	public void onPause() {
-		super.onPause();
 	}
 }
