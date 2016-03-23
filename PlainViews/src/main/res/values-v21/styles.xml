@@ -76,12 +76,4 @@
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
 
-    <style name="CitiesTheme" parent="TranslucentDecorActivityTheme">
-        <item name="android:fastScrollThumbDrawable">@drawable/fastscroll_thumb</item>
-        <item name="android:fastScrollTrackDrawable">@drawable/fastscroll_track</item>
-        <item name="actionBarStyle">@style/CitiesActionBarStyle</item>
-        <item name="windowActionBar">true</item>
-        <item name="windowNoTitle">false</item>
-    </style>
-
 </resources>
