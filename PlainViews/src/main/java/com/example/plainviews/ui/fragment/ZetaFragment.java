@@ -1,6 +1,5 @@
 package com.example.plainviews.ui.fragment;
 
-import com.example.plainviews.DeskClockFragment;
 import com.example.plainviews.R;
 import com.example.plainviews.widget.EmptyViewController;
 
@@ -11,13 +10,10 @@ import android.view.ViewGroup;
 import android.widget.NumberPicker;
 
 /**
- *
+ * Sample fragment to be removed or edited with some proper implementation.
  */
-public class ZetaFragment extends DeskClockFragment {
+public class ZetaFragment extends BaseFragment {
 
-	/**
-	 * The public no-arg constructor required by all fragments.
-	 */
 	public ZetaFragment() {
 	}
 

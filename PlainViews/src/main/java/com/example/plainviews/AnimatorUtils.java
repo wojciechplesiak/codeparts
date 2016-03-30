@@ -20,6 +20,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.view.animation.PathInterpolatorCompat;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Property;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -124,7 +125,7 @@ public class AnimatorUtils {
 				return;
 			} catch (Exception e) {
 				// something went wrong, don't try that again
-				LogUtils.e("Unable to use animateValue directly", e);
+				Log.e("", "Unable to use animateValue directly. " + e.getMessage());
 				sTryAnimateValue = false;
 			}
 		}

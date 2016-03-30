@@ -43,51 +43,16 @@
     <string name="menu_clock">Clock</string>
     <!-- Describes the purpose of the tab button which which switches the activity to the Stopwatch page -->
     <string name="menu_stopwatch">Stopwatch</string>
-    <!-- Clock view buttons strings-->
-    <!-- Describes the purpose of the button to start the activity to add/edit/delete alarms -->
-    <string name="button_alarms">Add alarm</string>
-    <!-- Describes the purpose of the button which provides a list of cities for the world clock settings -->
-    <string name="button_cities">Cities</string>
-    <!-- Describes the purpose of the button which pops up a menu of setting choices -->
-    <string name="button_menu">More options</string>
     <!-- Menu item on most screens to get to more settings -->
     <string name="menu_item_settings">Settings</string>
     <!-- Menu item on most screens to get to the help information -->
     <string name="menu_item_help">Help</string>
-    <!-- Menu item on clock screen to enter night mode. -->
-    <string name="menu_item_night_mode">Night mode</string>
     <!-- Menu item on Cities screen to sort by GMT offset -->
     <string name="menu_item_sort_by_gmt_offset">Sort by time</string>
-    <!-- Textual content of the button to discard the current dialog values and close the dialog -->
-    <string name="time_picker_cancel">Cancel</string>
-    <!-- Toast content when an alarm was deleted  -->
-    <string name="alarm_deleted">Alarm deleted</string>
-    <!-- format strings for clocks -->
-    <string name="clock_24_hours_format" translatable="false">kk&#58;mm</string>
-    <string name="main_widget_12_hours_format" translatable="false">h&#58;mm</string>
-    <!-- Font size for AM/PM should match widget_label_font_size -->
-    <string name="wc_widget_12_hours_format" translatable="false">h&#58;mm&#8202;<b><font size="14" face="sans-serif">a</font></b></string>
-    <!-- Font size for AM/PM should match bottom_text_size -->
-    <string name="main_clock_12_hours_format" translatable="false">h&#58;mm&#8202;<b><font size="16" face="sans-serif">a</font></b></string>
-    <!-- Font size for AM/PM should match label_font_size -->
-    <string name="world_clock_12_hours_format" translatable="false">h&#58;mm&#8202;<b><font size="14" face="sans-serif">a</font></b></string>
-    <!-- Font size for AM/PM should match alarm_label_size -->
-    <string name="alarm_time_12_hours_format" translatable="false">h&#58;mm&#8202;<b><font size="24" face="sans-serif">a</font></b></string>
-
-
 
 
     <!-- String for no alarms -->
-    <string name="no_alarms">No Alarms</string>
-
-    <!-- String that shows up in the action bar for the Picker Activity
-         where a use gets to pick which alarm to dismiss
-   [CHAR LIMIT=NONE]
-   -->
-    <string name="dismiss_alarm">Dismiss alarm</string>
-
-
-    <!-- ==================================================================== -->
+    <string name="no_content">No Content</string>
 
 </resources>
 

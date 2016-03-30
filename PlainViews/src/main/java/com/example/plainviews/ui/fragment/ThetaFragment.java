@@ -1,6 +1,5 @@
 package com.example.plainviews.ui.fragment;
 
-import com.example.plainviews.DeskClockFragment;
 import com.example.plainviews.R;
 import com.example.plainviews.widget.EmptyViewController;
 
@@ -10,13 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- *
+ * Sample fragment to be removed or edited with some proper implementation.
  */
-public class ThetaFragment extends DeskClockFragment {
+public class ThetaFragment extends BaseFragment {
 
-	/**
-	 * The public no-arg constructor required by all fragments.
-	 */
 	public ThetaFragment() {
 	}
 

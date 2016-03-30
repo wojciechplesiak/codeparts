@@ -19,4 +19,6 @@
 
     <string name="default_phone_number">8040</string>
     <string name="default_process_id">abcdefgh</string>
+    <string name="drawer_open">Open drawer menu</string>
+    <string name="drawer_close">Close drawer menu</string>
 </resources>

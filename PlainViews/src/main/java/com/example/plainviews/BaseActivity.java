@@ -21,6 +21,9 @@ public class BaseActivity extends AppCompatActivity {
 	 */
 	private static final long BACKGROUND_COLOR_ANIMATION_DURATION = 2000L;
 
+	protected static final int[] FRAGMENT_COLORS = new int[]{R.color.tab1_color, R.color.tab2_color,
+			R.color.tab3_color, R.color.tab4_color};
+
 	/**
 	 * {@link ColorDrawable} used to draw the window's background.
 	 */

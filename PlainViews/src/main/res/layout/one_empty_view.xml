@@ -2,7 +2,7 @@
 
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/one_empty_view"
-    style="@style/no_alarms"
+    style="@style/no_content"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"

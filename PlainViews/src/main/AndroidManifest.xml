@@ -11,7 +11,7 @@
         android:allowBackup="true"
         android:supportsRtl="true">
 
-        <activity android:name="DeskClock"
+        <activity android:name=".DrawerActivity"
                   android:label="@string/app_label"
                   android:theme="@style/DeskClockTheme"
                   android:icon="@mipmap/ic_launcher"

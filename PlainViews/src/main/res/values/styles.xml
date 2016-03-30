@@ -1,18 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2015 The Android Open Source Project
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-
-          http://www.apache.org/licenses/LICENSE-2.0
-
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
--->
 
 <resources xmlns:tools="http://schemas.android.com/tools">
 
@@ -57,7 +43,24 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="PrimaryLabelTextParentAppearance">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/label_text_size</item>
+    </style>
 
+    <style name="PrimaryLabelTextAppearance" parent="PrimaryLabelTextParentAppearance" />
+
+    <style name="SecondaryLabelTextParentAppearance">
+        <item name="android:textColor">@color/white_69p</item>
+        <item name="android:textSize">@dimen/label_text_size</item>
+    </style>
+
+    <style name="SecondaryLabelTextAppearance" parent="SecondaryLabelTextParentAppearance" />
+
+    <style name="TextAppearance">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
 
     <style name="SettingsTheme" parent="TranslucentDecorActivityTheme">
         <item name="android:detailsElementBackground">@null</item>
@@ -87,19 +90,11 @@
         <item name="android:background">@null</item>
     </style>
 
+
+    <!-- General labels styles: SMALL, MEDIUM, BIG  -->
     <style name="small_bold">
         <item name="android:textSize">@dimen/small_font_size</item>
         <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="small_thin">
-        <item name="android:textSize">@dimen/small_font_size</item>
-        <item name="android:fontFamily">sans-serif-thin</item>
-    </style>
-
-    <style name="no_alarms">
-        <item name="android:textSize">@dimen/no_alarm_font_size</item>
-        <item name="android:textColor">@color/white_69p</item>
     </style>
 
     <style name="small_light">
@@ -107,26 +102,29 @@
         <item name="android:fontFamily">sans-serif-light</item>
     </style>
 
+    <style name="small_thin">
+        <item name="android:textSize">@dimen/small_font_size</item>
+        <item name="android:fontFamily">sans-serif-thin</item>
+    </style>
+
     <style name="medium_light">
         <item name="android:textSize">@dimen/medium_font_size</item>
         <item name="android:fontFamily">sans-serif-thin</item>
     </style>
 
-    <style name="widget_medium_thin">
-        <item name="android:textSize">@dimen/widget_medium_font_size</item>
+    <style name="big_thin">
+        <item name="android:textSize">@dimen/big_font_size</item>
         <item name="android:fontFamily">sans-serif-thin</item>
     </style>
 
+
+    <!-- Label styles  -->
     <style name="label">
         <item name="android:textSize">@dimen/label_font_size</item>
     </style>
 
     <style name="label_not_caps" parent="label">
         <item name="android:textAllCaps">false</item>
-    </style>
-
-    <style name="widget_label" parent="label">
-        <item name="android:textSize">@dimen/widget_label_font_size</item>
     </style>
 
     <style name="header">
@@ -136,32 +134,6 @@
 
     <style name="header_not_caps" parent ="header">
         <item name="android:textAllCaps">false</item>
-    </style>
-
-    <style name="big_thin">
-        <item name="android:textSize">@dimen/big_font_size</item>
-        <item name="android:fontFamily">sans-serif-thin</item>
-    </style>
-
-    <style name="alarm_lockscreen_thin">
-        <item name="android:textSize">@dimen/alarm_info_font_size</item>
-        <item name="android:fontFamily">sans-serif-thin</item>
-    </style>
-
-    <style name="widget_big_thin" parent="big_thin">
-        <item name="android:textSize">@dimen/widget_big_font_size</item>
-    </style>
-
-    <style name="alarm_label">
-        <item name="android:textSize">@dimen/alarm_label_size</item>
-    </style>
-
-    <style name="alarm_label_not_caps" parent="alarm_label">
-        <item name="android:textAllCaps">false</item>
-    </style>
-
-    <style name="alarm_label_bold" parent="alarm_label">
-        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="body">
@@ -182,52 +154,48 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="labelEditTextStyle">
-        <item name="android:textCursorDrawable">@null</item>
-        <item name="android:inputType">textCapSentences</item>
-        <item name="android:selectAllOnFocus">true</item>
+
+    <!-- Reveal styles -->
+    <style name="reveal_title_thin">
+        <item name="android:textSize">@dimen/reveal_font_size</item>
+        <item name="android:fontFamily">sans-serif-thin</item>
     </style>
 
-    <style name="PrimaryLabelTextParentAppearance">
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">@dimen/label_text_size</item>
+    <style name="reveal_info_thin">
+        <item name="android:textSize">@dimen/reveal_font_size</item>
+        <item name="android:fontFamily">sans-serif-thin</item>
     </style>
 
-    <style name="PrimaryLabelTextAppearance" parent="PrimaryLabelTextParentAppearance" />
 
-    <style name="SecondaryLabelTextParentAppearance">
+    <!-- Drawer styles -->
+    <style name="drawer_menu_text_style">
+        <item name="android:textSize">@dimen/drawer_font_size</item>
+        <item name="android:fontFamily">sans-serif-thin</item>
+        <item name="android:textColor">@drawable/drawer_item_text_color_selector</item>
+    </style>
+
+
+    <!-- No content styles -->
+    <style name="no_content">
+        <item name="android:textSize">@dimen/no_content_font_size</item>
         <item name="android:textColor">@color/white_69p</item>
-        <item name="android:textSize">@dimen/label_text_size</item>
     </style>
 
-    <style name="SecondaryLabelTextAppearance" parent="SecondaryLabelTextParentAppearance" />
-
-    <style name="TextAppearance">
-        <item name="android:textSize">16sp</item>
-        <item name="android:textStyle">normal</item>
-    </style>
 
     <!-- Status Bar Styles -->
     <style name="TextAppearance.StatusBar">
         <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
     </style>
 
-    <!-- Notification content styles -->
-    <style name="TextAppearance.StatusBar.EventContent">
-        <item name="android:textSize">@dimen/notification_text_size</item>
-        <item name="android:textColor">@color/notif_text_grey</item>
+
+    <!-- Other styles -->
+    <style name="labelEditTextStyle">
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:inputType">textCapSentences</item>
+        <item name="android:selectAllOnFocus">true</item>
     </style>
 
-    <style name="TextAppearance.StatusBar.EventContent.Title">
-        <item name="android:textSize">@dimen/notification_title_text_size</item>
-        <item name="android:textColor">@color/white</item>
-    </style>
-
-
-
-
-    <!-- ================================================== -->
-
+    <!-- Path text styles-->
     <style name="dummy_view_style" parent="small_thin">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
