@@ -1,6 +1,7 @@
 package com.example.plainviews.dataadapter;
 
 import com.example.plainviews.AnimatorUtils;
+import com.example.plainviews.DrawerActivity;
 import com.example.plainviews.R;
 import com.example.plainviews.ui.glimpse.Glimpse;
 
@@ -55,6 +56,8 @@ public class ItemsViewHolder extends RecyclerView.ViewHolder implements View.OnC
 						.setCancelable(true)
 						.build()
 						.start();
+
+//				hideBottomBar(context);
 			}
 		});
 		cardItem.setOnLongClickListener(new View.OnLongClickListener() {
@@ -82,5 +85,11 @@ public class ItemsViewHolder extends RecyclerView.ViewHolder implements View.OnC
 		menu.setHeaderTitle("Select The Action");
 		menu.add(0, v.getId(), 0, "Call");//groupId, itemId, order, title
 		menu.add(0, v.getId(), 0, "SMS");
+	}
+
+	private void hideBottomBar(Context context) {
+		if (context instanceof DrawerActivity) {
+			((DrawerActivity) context).hideBottomBar();
+		}
 	}
 }

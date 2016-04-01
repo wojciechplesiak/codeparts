@@ -43,7 +43,16 @@
                     android:layout_height="@dimen/bottom_bar_height"
                     android:layout_alignParentBottom="true"
                     android:background="#99000000"
-                    android:orientation="horizontal"/>
+                    android:orientation="horizontal" >
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="#"/>
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="[]"/>
+                    </LinearLayout>
             </RelativeLayout>
 
         </com.example.plainviews.widget.BottomBarDragLayout>

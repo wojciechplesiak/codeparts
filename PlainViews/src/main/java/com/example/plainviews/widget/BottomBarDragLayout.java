@@ -28,6 +28,8 @@ public class BottomBarDragLayout extends RelativeLayout {
 
 	private View dragView;
 
+	private boolean isExpanded;
+	private boolean autoDismissScheduled;
 	private int currentTop;
 	private int maxTop = NOT_SET;
 	private int minTop = NOT_SET;
@@ -127,11 +129,9 @@ public class BottomBarDragLayout extends RelativeLayout {
 	private void init() {
 		setupMaxTop(dragView);
 		setupMinTop();
-//		if (expandWhenViewReady != null) {
-//			toggle(expandWhenViewReady);
-//		} else {
-//			hideBottomBar();
-//		}
+		if (expandWhenViewReady != null) {
+			toggle(expandWhenViewReady);
+		}
 	}
 
 	private int setupMaxTop(View child) {
@@ -160,12 +160,20 @@ public class BottomBarDragLayout extends RelativeLayout {
 		if (settleDestY > 0) {
 			dragHelper.smoothSlideViewTo(dragView, 0, settleDestY);
 			ViewCompat.postInvalidateOnAnimation(BottomBarDragLayout.this);
+			isExpanded = expand;
 		} else {
 			Log.i(TAG, "View not ready yet. Bottom bar will be toggled when ready");
 			expandWhenViewReady = expand;
 		}
 
+		scheduleOrCancelAutoDismiss(expand);
+	}
+
+	private void scheduleOrCancelAutoDismiss(boolean expand) {
 		if (expand && autoDismiss) {
+			if (autoDismissScheduled) {
+				cancelAutoDismiss();
+			}
 			scheduleAutoDismiss();
 		} else {
 			cancelAutoDismiss();
@@ -183,12 +191,14 @@ public class BottomBarDragLayout extends RelativeLayout {
 				hideBottomBar();
 			}
 		}, dismissAfter);
+		autoDismissScheduled = true;
 	}
 
 	private void cancelAutoDismiss() {
 		if (dismissHandler != null) {
 			dismissHandler.removeCallbacksAndMessages(null);
 		}
+		autoDismissScheduled = false;
 	}
 
 	private class DragHelperCallback extends ViewDragHelper.Callback {
@@ -204,13 +214,13 @@ public class BottomBarDragLayout extends RelativeLayout {
 		}
 
 		@Override
-		public void onViewPositionChanged(View changedView, int left, int top, int dx, int dy) {
-			currentTop = top;
+		public int getViewVerticalDragRange(View child) {
+			return maxTop;
 		}
 
 		@Override
-		public int getViewVerticalDragRange(View child) {
-			return maxTop;
+		public void onViewPositionChanged(View changedView, int left, int top, int dx, int dy) {
+			currentTop = top;
 		}
 
 		@Override
@@ -236,10 +246,21 @@ public class BottomBarDragLayout extends RelativeLayout {
 				ViewCompat.postInvalidateOnAnimation(BottomBarDragLayout.this);
 			}
 
-			if (expand && autoDismiss) {
-				scheduleAutoDismiss();
-			} else {
-				cancelAutoDismiss();
+			isExpanded = expand;
+		}
+
+		@Override
+		public void onViewDragStateChanged(int state) {
+			super.onViewDragStateChanged(state);
+			switch (state) {
+				case ViewDragHelper.STATE_DRAGGING:
+				case ViewDragHelper.STATE_SETTLING:
+					cancelAutoDismiss();
+					break;
+
+				case ViewDragHelper.STATE_IDLE:
+					scheduleOrCancelAutoDismiss(isExpanded);
+					break;
 			}
 		}
 	}

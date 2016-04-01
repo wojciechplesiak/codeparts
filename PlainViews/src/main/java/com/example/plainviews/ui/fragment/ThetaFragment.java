@@ -1,5 +1,6 @@
 package com.example.plainviews.ui.fragment;
 
+import com.example.plainviews.DrawerActivity;
 import com.example.plainviews.R;
 import com.example.plainviews.widget.EmptyViewController;
 
@@ -36,6 +37,7 @@ public class ThetaFragment extends BaseFragment {
 			@Override
 			public void onClick(View v) {
 				emptyViewController.setEmpty(!emptyViewController.isEmpty());
+				((DrawerActivity) getActivity()).hideBottomBar();
 			}
 		});
 

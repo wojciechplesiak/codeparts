@@ -141,6 +141,19 @@ public class DrawerActivity extends BaseActivity {
 		}
 	}
 
+	/**
+	 * Hides bottom bar with animation.
+	 *
+	 * Note: there is this strange 'bug' when bottom bar disappears whenever onLayout is called
+	 * inside BottomBarDragLayout (eg. due to view visibility change or view is added/removed).
+	 * As a workaround call this method whenever you need to to hide th bottom bar with animation.
+	 */
+	public void hideBottomBar() {
+		if (bottomBarDragLayout != null) {
+			bottomBarDragLayout.hideBottomBar();
+		}
+	}
+
 	private class DrawerItemClickListener implements ListView.OnItemClickListener {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

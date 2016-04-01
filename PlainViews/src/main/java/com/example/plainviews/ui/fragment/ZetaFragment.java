@@ -1,5 +1,6 @@
 package com.example.plainviews.ui.fragment;
 
+import com.example.plainviews.DrawerActivity;
 import com.example.plainviews.R;
 import com.example.plainviews.widget.EmptyViewController;
 
@@ -27,7 +28,7 @@ public class ZetaFragment extends BaseFragment {
 		// Inflate the layout for this fragment
 		final View v = inflater.inflate(R.layout.zeta_fragment, container, false);
 
-		ViewGroup mainLayout = (ViewGroup) v.findViewById(R.id.main);
+		final ViewGroup mainLayout = (ViewGroup) v.findViewById(R.id.main);
 
 		final EmptyViewController emptyViewController = new EmptyViewController(mainLayout, v
 				.findViewById(R.id.content_frame), v.findViewById(R.id.one_empty_view));
@@ -37,6 +38,7 @@ public class ZetaFragment extends BaseFragment {
 			@Override
 			public void onClick(View v) {
 				emptyViewController.setEmpty(!emptyViewController.isEmpty());
+				((DrawerActivity) getActivity()).hideBottomBar();
 			}
 		});
 
