@@ -51,7 +51,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * DeskClock clock view for desk docks.
+ * Main activity.
  */
 public class MainActivity extends BaseActivity {
 

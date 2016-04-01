@@ -50,15 +50,4 @@ public class IotaFragment extends BaseFragment {
 		recyclerView.setItemAnimator(new DefaultItemAnimator());
 		recyclerView.setAdapter(new ItemsAdapter(getActivity()));
 	}
-
-	@Override
-	public void onResume() {
-		super.onResume();
-
-//		final MainActivity activity = (MainActivity) getActivity();
-//		if (activity.getSelectedTab() == MainActivity.ZETA_TAB_INDEX) {
-//			setFabAppearance();
-//			setLeftRightButtonAppearance();
-//		}
-	}
 }

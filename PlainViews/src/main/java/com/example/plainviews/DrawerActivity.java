@@ -4,9 +4,8 @@ import com.example.plainviews.ui.fragment.EtaFragment;
 import com.example.plainviews.ui.fragment.IotaFragment;
 import com.example.plainviews.ui.fragment.ThetaFragment;
 import com.example.plainviews.ui.fragment.ZetaFragment;
+import com.example.plainviews.widget.BottomBarDragLayout;
 
-import android.app.SearchManager;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -22,16 +21,16 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 /**
- *
+ * Main activity with drawer.
  */
 public class DrawerActivity extends BaseActivity {
 
 	private DrawerLayout drawerLayout;
 	private ListView drawerList;
 	private ActionBarDrawerToggle drawerToggle;
+	private BottomBarDragLayout bottomBarDragLayout;
 
 	private CharSequence drawerTitle;
 	private CharSequence title;
@@ -42,6 +41,8 @@ public class DrawerActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_drawer_layout);
 		setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+		bottomBarDragLayout = (BottomBarDragLayout) findViewById(R.id.bottom_bar_layout);
+		bottomBarDragLayout.showBottomBar();
 
 		title = drawerTitle = getTitle();
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -73,6 +74,15 @@ public class DrawerActivity extends BaseActivity {
 			public void onDrawerOpened(View drawerView) {
 				getSupportActionBar().setTitle(drawerTitle);
 				invalidateOptionsMenu();
+			}
+
+			@Override
+			public void onDrawerStateChanged(int newState) {
+				super.onDrawerStateChanged(newState);
+				if (newState == DrawerLayout.STATE_DRAGGING || newState == DrawerLayout
+						.STATE_SETTLING) {
+					bottomBarDragLayout.hideBottomBar();
+				}
 			}
 		};
 		drawerLayout.setDrawerListener(drawerToggle);
@@ -112,14 +122,19 @@ public class DrawerActivity extends BaseActivity {
 		switch (item.getItemId()) {
 			case R.id.action_websearch:
 				// create intent to perform web search for this planet
-				Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
-				intent.putExtra(SearchManager.QUERY, getSupportActionBar().getTitle());
-				// catch event that there's no activity to handle intent
-				if (intent.resolveActivity(getPackageManager()) != null) {
-					startActivity(intent);
-				} else {
-					Toast.makeText(this, "App not available", Toast.LENGTH_LONG).show();
+//				Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
+//				intent.putExtra(SearchManager.QUERY, getSupportActionBar().getTitle());
+//				// catch event that there's no activity to handle intent
+//				if (intent.resolveActivity(getPackageManager()) != null) {
+//					startActivity(intent);
+//				} else {
+//					Toast.makeText(this, "App not available", Toast.LENGTH_LONG).show();
+//				}
+				int posittion = drawerList.getCheckedItemPosition() + 1;
+				if (posittion > 3) {
+					posittion = 0;
 				}
+				selectItem(posittion);
 				return true;
 			default:
 				return super.onOptionsItemSelected(item);
@@ -156,7 +171,7 @@ public class DrawerActivity extends BaseActivity {
 
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		fragmentManager.beginTransaction()
-				.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+				.setCustomAnimations(R.anim.dim_in, R.anim.dim_out)
 				.replace(R.id.content_frame, fragment)
 				.commit();
 

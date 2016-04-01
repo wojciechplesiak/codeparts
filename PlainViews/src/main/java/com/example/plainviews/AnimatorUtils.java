@@ -157,6 +157,22 @@ public class AnimatorUtils {
 	}
 
 	/**
+	 * 100ms blink animation. Sets alpha of a given from from 0 to 1 (50ms) and 1 to 0 (50ms)
+	 * @param view
+	 */
+	public static void blink(final View view) {
+		if (view == null) {
+			return;
+		}
+
+		final AnimatorSet set = new AnimatorSet();
+		set.play(ObjectAnimator.ofFloat(view, "alpha", 0.0f, 1.0f).setDuration(50)).before
+				(ObjectAnimator.ofFloat(view, "alpha", 1.0f, 0.0f).setDuration(50));
+
+		set.start();
+	}
+
+	/**
 	 * Helps to create a nice reveal animation with optional alert text.
 	 * @param context
 	 * @param source

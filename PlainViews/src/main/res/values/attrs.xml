@@ -16,25 +16,6 @@
   -->
 <resources>
 
-    <!--<declare-styleable name="AnalogClock">-->
-        <!--<attr name="jewelRadius" format="dimension"/>-->
-        <!--<attr name="jewelOffset" format="dimension"/>-->
-        <!--<attr name="jewelColor" format="color"/>-->
-    <!--</declare-styleable>-->
-
-    <!--<declare-styleable name="TextTime">-->
-        <!--&lt;!&ndash; Specifies the formatting pattern used to show the time and/or date-->
-             <!--in 12-hour mode. Please refer to {@link android.text.format.DateFormat}-->
-             <!--for a complete description of accepted formatting patterns.-->
-             <!--The default pattern is "h:mm a". &ndash;&gt;-->
-        <!--<attr name="format12Hour" format="string"/>-->
-        <!--&lt;!&ndash; Specifies the formatting pattern used to show the time and/or date-->
-             <!--in 24-hour mode. Please refer to {@link android.text.format.DateFormat}-->
-             <!--for a complete description of accepted formatting patterns.-->
-             <!--The default pattern is "H:mm". &ndash;&gt;-->
-        <!--<attr name="format24Hour" format="string"/>-->
-   <!--</declare-styleable>-->
-
     <declare-styleable name="CircleView">
         <!-- Sets the center/radius of the circle relative to the view's bounds. -->
         <attr name="android:gravity" />
@@ -46,6 +27,19 @@
         <attr name="centerY" format="dimension" />
         <!-- The radius of the circle. -->
         <attr name="radius" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="BottomBarDragLayout">
+        <!-- Indicates if bottom bar should be automatically dismissed after some delay -->
+        <attr name="autoDismiss" format="boolean" />
+        <!-- Sets a delay after which bottom bar will be dismissed. -->
+        <attr name="dismissAfter" format="integer" />
+        <!-- Sets a velocity threshold which triggers auto expand/collapse-->
+        <attr name="expandVelocity" format="integer" />
+        <!-- An id of a bottom bar view -->
+        <attr name="bottomBarId" format="reference" />
+        <!-- Height of a visible part of a bottom bar -->
+        <attr name="bottomBarHeight" format="dimension" />
     </declare-styleable>
 
 </resources>

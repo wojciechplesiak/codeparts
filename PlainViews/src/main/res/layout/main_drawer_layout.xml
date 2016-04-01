@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:fitsSystemWindows="true"
               android:orientation="vertical">
 
@@ -17,10 +18,35 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <FrameLayout
-            android:id="@+id/content_frame"
+        <com.example.plainviews.widget.BottomBarDragLayout
+            android:id="@+id/bottom_bar_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            app:autoDismiss="true"
+            app:bottomBarId="@+id/bottom_bar"
+            app:bottomBarHeight="@dimen/bottom_bar_height">
+
+            <FrameLayout
+                android:id="@+id/content_frame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <RelativeLayout
+                android:id="@id/bottom_bar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bottom_bar_container_height"
+                android:layout_marginBottom="-70dp"
+                android:layout_alignParentBottom="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/bottom_bar_height"
+                    android:layout_alignParentBottom="true"
+                    android:background="#99000000"
+                    android:orientation="horizontal"/>
+            </RelativeLayout>
+
+        </com.example.plainviews.widget.BottomBarDragLayout>
 
         <ListView
             android:id="@+id/left_drawer"

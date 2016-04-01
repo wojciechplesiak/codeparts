@@ -23,13 +23,8 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.os.Build;
-import android.os.Handler;
 import android.os.Looper;
-import android.os.SystemClock;
 import android.view.View;
-
-import java.util.Calendar;
-import java.util.TimeZone;
 
 public class Utils {
 
@@ -80,59 +75,6 @@ public class Utils {
      */
     public static boolean isMOrLater() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
-    }
-
-    public static long getTimeNow() {
-        return SystemClock.elapsedRealtime();
-    }
-
-    /** Setup to find out when the quarter-hour changes (e.g. Kathmandu is GMT+5:45) **/
-    public static long getAlarmOnQuarterHour() {
-        final Calendar calendarInstance = Calendar.getInstance();
-        final long now = System.currentTimeMillis();
-        return getAlarmOnQuarterHour(calendarInstance, now);
-    }
-
-    static long getAlarmOnQuarterHour(Calendar calendar, long now) {
-        //  Set 1 second to ensure quarter-hour threshold passed.
-        calendar.set(Calendar.SECOND, 1);
-        calendar.set(Calendar.MILLISECOND, 0);
-        int minute = calendar.get(Calendar.MINUTE);
-        calendar.add(Calendar.MINUTE, 15 - (minute % 15));
-        long alarmOnQuarterHour = calendar.getTimeInMillis();
-
-        // Verify that alarmOnQuarterHour is within the next 15 minutes
-        long delta = alarmOnQuarterHour - now;
-        if (0 >= delta || delta > 901000) {
-            // Something went wrong in the calculation, schedule something that is
-            // about 15 minutes. Next time , it will align with the 15 minutes border.
-            alarmOnQuarterHour = now + 901000;
-        }
-        return alarmOnQuarterHour;
-    }
-
-    // Setup a thread that starts at the quarter-hour plus one second. The extra second is added to
-    // ensure dates have changed.
-    public static void setQuarterHourUpdater(Handler handler, Runnable runnable) {
-        String timezone = TimeZone.getDefault().getID();
-        if (handler == null || runnable == null || timezone == null) {
-            return;
-        }
-        long runInMillis = getAlarmOnQuarterHour() - System.currentTimeMillis();
-        // Ensure the delay is at least one second.
-        if (runInMillis < 1000) {
-            runInMillis = 1000;
-        }
-        handler.removeCallbacks(runnable);
-        handler.postDelayed(runnable, runInMillis);
-    }
-
-    // Stop the quarter-hour update thread
-    public static void cancelQuarterHourUpdater(Handler handler, Runnable runnable) {
-        if (handler == null || runnable == null) {
-            return;
-        }
-        handler.removeCallbacks(runnable);
     }
 
     /**

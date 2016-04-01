@@ -19,6 +19,9 @@
 
     <dimen name="dummy_view_padding">88dip</dimen>
 
+    <dimen name="bottom_bar_height">70dp</dimen>
+    <dimen name="bottom_bar_container_height">150dp</dimen>
+
     <!-- ============================================================ -->
 
     <dimen name="fab_margin">0dp</dimen>
