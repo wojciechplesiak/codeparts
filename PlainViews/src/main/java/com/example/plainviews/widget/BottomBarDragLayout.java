@@ -15,35 +15,106 @@ import android.view.ViewTreeObserver;
 import android.widget.RelativeLayout;
 
 /**
- * BottomBar widget.
+ * Custom layout used to slide in/out a BottomBar out of bottom of the screen. BottomBar view id
+ * should be provided in xml attribute #bottomBarId.
  */
 public class BottomBarDragLayout extends RelativeLayout {
 
 	private static final String TAG = BottomBarDragLayout.class.getSimpleName();
 
+	/**
+	 * Default velocity to reach after which BottomBar will be expanded/collapsed automatically.
+	 */
 	private static final int EXPAND_VELOCITY = 800;
-	private static final int DEFAULT_DISMISS_DELAY_MS = 2000;
-	private static final int DEFAULT_BAR_HEIGHT_PX = 200;
+
+	/**
+	 * If #autoDismiss is enabled this represents the default time after which BottomBar will be
+	 * automatically collapsed.
+	 */
+	private static final int DEFAULT_DISMISS_DELAY_MS = 5000;
+
+	/**
+	 * Normal sensitivity level. It's a multiplier for how sensitive the view drag helper should
+	 * be about detecting the start of a drag. Larger values are more sensitive. 1.0f is normal.
+	 */
+	private static final float DRAG_SENSITIVITY = 1.0f;
 	private static final int NOT_SET = -1;
 
-	private View dragView;
 
+	/**
+	 * Flag indicating the expanded state of the BottomBar.
+	 */
 	private boolean isExpanded;
+
+	/**
+	 * Flag indicating if auto-dismiss is already scheduled and waiting for execution.
+	 */
 	private boolean autoDismissScheduled;
+
+	/**
+	 * Current BottomBar's top position in pixels (counted from the top of the screen)
+	 */
 	private int currentTop;
+
+	/**
+	 * Maximum top position in pixels. For expanded state.
+	 */
 	private int maxTop = NOT_SET;
+
+	/**
+	 * Minimum top position in pixels. For collapsed state.
+	 */
 	private int minTop = NOT_SET;
 
+
+	/**
+	 * Flag indicating if BottomBar should be collapsed automatically after user stopped
+	 * interacting with it.
+	 */
 	private boolean autoDismiss;
+
+	/**
+	 * Time after which BottomBar will be collapsed. Used only if #autoDismiss is enabled.
+	 */
 	private int dismissAfter;
+
+	/**
+	 * Velocity to reach after which BottomBar will be expanded/collapsed automatically.
+	 */
 	private int expandVelocity;
+
+	/**
+	 * A layout id of the BottomBar view.
+	 */
 	private int bottomBarId;
+
+	/**
+	 * Height of a visible part of a BottomBar. If not set by xml attribute height of the whole
+	 * #bottomBarId view will be used.
+	 */
 	private int bottomBarHeight;
 
+	/**
+	 * When #showBottomBar or #hideBottomBar were called before BottomBar got drawn on a screen,
+	 * this flag will make it expand/collapse when it's ready. True - expand, False - collapse,
+	 * Null - do nothing.
+	 */
 	private Boolean expandWhenViewReady;
 
+
+	/**
+	 * View which is being dragged inside this layout - BottomBar view.
+	 */
+	private View dragView;
+
+	/**
+	 * Helper class allowing a user to drag and reposition views within their parent ViewGroup.
+	 */
 	private final ViewDragHelper dragHelper;
 
+	/**
+	 * Handler used to schedule BottomBar's automatic collapsing.
+	 */
 	private Handler dismissHandler;
 
 	public BottomBarDragLayout(Context context) {
@@ -56,7 +127,7 @@ public class BottomBarDragLayout extends RelativeLayout {
 
 	public BottomBarDragLayout(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
-		dragHelper = ViewDragHelper.create(this, 1.0f, new DragHelperCallback());
+		dragHelper = ViewDragHelper.create(this, DRAG_SENSITIVITY, new DragHelperCallback());
 
 		final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BottomBarDragLayout,
 				defStyle, 0);
@@ -68,7 +139,7 @@ public class BottomBarDragLayout extends RelativeLayout {
 				EXPAND_VELOCITY);
 		bottomBarId = a.getResourceId(R.styleable.BottomBarDragLayout_bottomBarId, NO_ID);
 		bottomBarHeight = a.getDimensionPixelSize(R.styleable.BottomBarDragLayout_bottomBarHeight,
-				DEFAULT_BAR_HEIGHT_PX);
+				NOT_SET);
 
 		a.recycle();
 
@@ -79,10 +150,7 @@ public class BottomBarDragLayout extends RelativeLayout {
 
 	@Override
 	public boolean onInterceptTouchEvent(MotionEvent event) {
-		if (dragHelper.shouldInterceptTouchEvent(event)) {
-			return true;
-		}
-		return super.onInterceptTouchEvent(event);
+		return dragHelper.shouldInterceptTouchEvent(event) || super.onInterceptTouchEvent(event);
 	}
 
 	@Override
@@ -101,7 +169,7 @@ public class BottomBarDragLayout extends RelativeLayout {
 	@Override
 	protected void onFinishInflate() {
 		super.onFinishInflate();
-		dragView = findViewById(R.id.bottom_bar);
+		dragView = findViewById(bottomBarId);
 		final ViewTreeObserver observer = dragView.getViewTreeObserver();
 		observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
 			@Override
@@ -126,9 +194,23 @@ public class BottomBarDragLayout extends RelativeLayout {
 		toggle(false);
 	}
 
+	/**
+	 * Informs that user interacted with BottomBar in other way than dragging it. Should be
+	 * called when #autoDismiss is enabled to prevent automatic BottomBar collapse while user is
+	 * clicking/interacting with it's internal views. This will reschedule auto-dismiss.
+	 */
+	public void onUserInteraction() {
+		Log.i(TAG, "onUserInteraction()");
+		scheduleOrCancelAutoDismiss();
+	}
+
 	private void init() {
+		Log.i(TAG, "init()");
 		setupMaxTop(dragView);
 		setupMinTop();
+		if (bottomBarHeight <= NOT_SET) {
+			bottomBarHeight = dragView.getHeight();
+		}
 		if (expandWhenViewReady != null) {
 			toggle(expandWhenViewReady);
 		}
@@ -149,45 +231,46 @@ public class BottomBarDragLayout extends RelativeLayout {
 	}
 
 	private void toggle(boolean expand) {
-		Log.i(TAG, "expand: " + expand);
-		final int settleDestY = expand ? maxTop : minTop;
+		Log.i(TAG, "Toggle bottom bar. Expand: " + expand);
+		final int finalTop = expand ? maxTop : minTop;
 
-//		if (currentTop == settleDestY) {
-//			Log.d(TAG, "Already on it's place");
-//			return;
-//		}
-
-		if (settleDestY > 0) {
-			dragHelper.smoothSlideViewTo(dragView, 0, settleDestY);
-			ViewCompat.postInvalidateOnAnimation(BottomBarDragLayout.this);
-			isExpanded = expand;
+		if (finalTop > 0) {
+			setExpanded(expand);
+			if (currentTop != finalTop) {
+				dragHelper.smoothSlideViewTo(dragView, 0, finalTop);
+				ViewCompat.postInvalidateOnAnimation(BottomBarDragLayout.this);
+			} else {
+				scheduleOrCancelAutoDismiss();
+			}
 		} else {
 			Log.i(TAG, "View not ready yet. Bottom bar will be toggled when ready");
 			expandWhenViewReady = expand;
 		}
-
-		scheduleOrCancelAutoDismiss(expand);
 	}
 
-	private void scheduleOrCancelAutoDismiss(boolean expand) {
+	private void scheduleOrCancelAutoDismiss() {
+		boolean expand = isExpanded();
+		Log.d(TAG, "scheduleOrCancelAutoDismiss: " + expand);
 		if (expand && autoDismiss) {
 			if (autoDismissScheduled) {
 				cancelAutoDismiss();
 			}
 			scheduleAutoDismiss();
-		} else {
+		} else if (autoDismissScheduled) {
 			cancelAutoDismiss();
 		}
+
 	}
 
 	private void scheduleAutoDismiss() {
+		Log.d(TAG, "scheduleAutoDismiss()");
 		if (dismissHandler == null) {
 			dismissHandler = new Handler();
 		}
 		dismissHandler.postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				Log.d(TAG, "Auto hiding bottom bar");
+				Log.d(TAG, "Bottom bar auto dismiss fired..");
 				hideBottomBar();
 			}
 		}, dismissAfter);
@@ -195,10 +278,24 @@ public class BottomBarDragLayout extends RelativeLayout {
 	}
 
 	private void cancelAutoDismiss() {
+		Log.d(TAG, "cancelAutoDismiss()");
 		if (dismissHandler != null) {
 			dismissHandler.removeCallbacksAndMessages(null);
 		}
 		autoDismissScheduled = false;
+	}
+
+	private void setExpanded(boolean expanded) {
+		Log.d(TAG, "setExpanded = " + expanded);
+		synchronized (BottomBarDragLayout.class) {
+			isExpanded = expanded;
+		}
+	}
+
+	private boolean isExpanded() {
+		synchronized (BottomBarDragLayout.class) {
+			return isExpanded;
+		}
 	}
 
 	private class DragHelperCallback extends ViewDragHelper.Callback {
@@ -240,13 +337,14 @@ public class BottomBarDragLayout extends RelativeLayout {
 				expand = true;
 			}
 
-			final int settleDestY = expand ? maxTop : minTop;
+			final int finalTop = expand ? maxTop : minTop;
 
-			if (dragHelper.settleCapturedViewAt(0, settleDestY)) {
+			if (dragHelper.settleCapturedViewAt(0, finalTop)) {
 				ViewCompat.postInvalidateOnAnimation(BottomBarDragLayout.this);
 			}
 
-			isExpanded = expand;
+			setExpanded(expand);
+			Log.w(TAG, "onViewReleased isExpanded = " + isExpanded);
 		}
 
 		@Override
@@ -255,11 +353,14 @@ public class BottomBarDragLayout extends RelativeLayout {
 			switch (state) {
 				case ViewDragHelper.STATE_DRAGGING:
 				case ViewDragHelper.STATE_SETTLING:
-					cancelAutoDismiss();
+					if (autoDismissScheduled) {
+						cancelAutoDismiss();
+					}
 					break;
 
 				case ViewDragHelper.STATE_IDLE:
-					scheduleOrCancelAutoDismiss(isExpanded);
+					Log.w(TAG, "onViewDragStateChanged isExpanded = " + isExpanded);
+					scheduleOrCancelAutoDismiss();
 					break;
 			}
 		}
