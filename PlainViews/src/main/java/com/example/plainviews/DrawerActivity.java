@@ -73,10 +73,10 @@ public class DrawerActivity extends BaseActivity {
 			return;
 		}
 
-		bottomBar.addTab(R.drawable.ic_tab_alarm, R.string.tab_zeta);
-		bottomBar.addTab(R.drawable.ic_tab_clock, R.string.tab_eta);
-		bottomBar.addTab(R.drawable.ic_tab_timer, R.string.tab_theta);
-		bottomBar.addTab(R.drawable.ic_tab_stopwatch, R.string.tab_iota);
+		bottomBar.addTab(R.drawable.ic_tab_zeta, R.string.tab_zeta);
+		bottomBar.addTab(R.drawable.ic_tab_eta, R.string.tab_eta);
+		bottomBar.addTab(R.drawable.ic_tab_theta, R.string.tab_theta);
+		bottomBar.addTab(R.drawable.ic_tab_iota, R.string.tab_iota);
 		bottomBar.selectTabAt(INITIAL_POSITION);
 		bottomBar.initTabsListener();
 	}
@@ -195,8 +195,12 @@ public class DrawerActivity extends BaseActivity {
 				.replace(R.id.content_frame, fragment)
 				.commit();
 
-		// update selected item and title, then close the drawer
+		bottomBar.selectTabAt(position);
+
 		drawerMenu.setItemSelected(position);
+		if (!drawerMenu.isOpen()) {
+			drawerMenu.setBackgroundColor(color);
+		}
 		setTitle(fragmentTitles[position]);
 		drawerMenu.close();
 	}

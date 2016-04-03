@@ -45,7 +45,7 @@ public class BottomBar {
 		tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 			@Override
 			public void onTabSelected(TabLayout.Tab tab) {
-				activity.onBottomBarTabSelected(tab.getPosition());
+//				activity.onBottomBarTabSelected(tab.getPosition());
 				bottomBarDragLayout.onUserInteraction();
 			}
 

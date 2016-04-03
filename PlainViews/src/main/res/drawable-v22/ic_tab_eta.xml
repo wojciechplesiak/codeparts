@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_selected="false" android:state_focused="true"
+        android:drawable="@drawable/ic_eta_selected" />
+
+    <item android:id="@+id/on" android:state_selected="true"
+        android:drawable="@drawable/ic_eta_selected" />
+
+    <item android:id="@+id/off"
+        android:drawable="@drawable/ic_eta" />
+
+    <transition android:fromId="@id/off" android:toId="@id/on">
+        <animated-vector android:drawable="@drawable/ic_eta_selected">
+            <target
+                android:name="small_balls"
+                android:animation="@animator/ic_cw_rotation_animation" />
+            <target
+                android:name="medium_balls"
+                android:animation="@animator/ic_shake_animation" />
+            <target
+                android:name="big_balls"
+                android:animation="@animator/ic_ccw_rotation_animation" />
+        </animated-vector>
+    </transition>
+
+</animated-selector>
+
