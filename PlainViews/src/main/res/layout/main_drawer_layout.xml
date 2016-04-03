@@ -35,24 +35,18 @@
                 android:id="@id/bottom_bar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/bottom_bar_container_height"
-                android:layout_marginBottom="-70dp"
+                android:layout_marginBottom="@dimen/bottom_bar_container_bottom_margin"
                 android:layout_alignParentBottom="true">
 
-                <LinearLayout
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/bottom_bar_sliding_tabs"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/bottom_bar_height"
                     android:layout_alignParentBottom="true"
-                    android:background="#99000000"
-                    android:orientation="horizontal" >
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="#"/>
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="[]"/>
-                    </LinearLayout>
+                    android:background="@color/bottom_bar_color"
+                    app:tabIndicatorColor="@android:color/transparent"
+                    app:tabGravity="fill"
+                    app:tabMode="fixed" />
             </RelativeLayout>
 
         </com.example.plainviews.widget.BottomBarDragLayout>

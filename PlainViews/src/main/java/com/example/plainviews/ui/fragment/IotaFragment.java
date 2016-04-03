@@ -29,7 +29,7 @@ public class IotaFragment extends BaseFragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedState) {
-		// Inflate the layout for this fragment
+
 		final View v = inflater.inflate(R.layout.iota_fragment, container, false);
 
 		ViewGroup mainLayout = (ViewGroup) v.findViewById(R.id.main);

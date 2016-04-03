@@ -21,9 +21,6 @@ public class BaseActivity extends AppCompatActivity {
 	 */
 	private static final long BACKGROUND_COLOR_ANIMATION_DURATION = 2000L;
 
-	protected static final int[] FRAGMENT_COLORS = new int[]{R.color.tab1_color, R.color.tab2_color,
-			R.color.tab3_color, R.color.tab4_color};
-
 	/**
 	 * {@link ColorDrawable} used to draw the window's background.
 	 */
@@ -33,10 +30,10 @@ public class BaseActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		final int currentColor = getResources().getColor(R.color.default_background);
+		final int currentColor = Utils.getColor(this, R.color.default_background);
 		final int backgroundColor = savedInstanceState == null ? currentColor
 				: savedInstanceState.getInt(KEY_BACKGROUND_COLOR, currentColor);
-		setBackgroundColor(backgroundColor, false /* animate */);
+		setBackgroundColor(backgroundColor, false);
 	}
 
 	/**

@@ -24,7 +24,7 @@ public class ThetaFragment extends BaseFragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedState) {
-		// Inflate the layout for this fragment
+
 		final View v = inflater.inflate(R.layout.theta_fragment, container, false);
 
 		ViewGroup mainLayout = (ViewGroup) v.findViewById(R.id.main);

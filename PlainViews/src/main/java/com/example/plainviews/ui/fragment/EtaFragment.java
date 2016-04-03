@@ -24,7 +24,7 @@ public class EtaFragment extends BaseFragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedState) {
-		// Inflate the layout for this fragment
+
 		final View v = inflater.inflate(R.layout.eta_fragment, container, false);
 
 		ViewGroup mainLayout = (ViewGroup) v.findViewById(R.id.main);
@@ -33,7 +33,7 @@ public class EtaFragment extends BaseFragment {
 				.findViewById(R.id.content_frame), v.findViewById(R.id.one_empty_view));
 		emptyViewController.setEmpty(false);
 
-		final DullView dullView = (DullView)v.findViewById(R.id.path_view);
+		final DullView dullView = (DullView) v.findViewById(R.id.path_view);
 		mainLayout.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {

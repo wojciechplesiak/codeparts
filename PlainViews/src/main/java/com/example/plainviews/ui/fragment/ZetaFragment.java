@@ -25,7 +25,7 @@ public class ZetaFragment extends BaseFragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedState) {
-		// Inflate the layout for this fragment
+
 		final View v = inflater.inflate(R.layout.zeta_fragment, container, false);
 
 		final ViewGroup mainLayout = (ViewGroup) v.findViewById(R.id.main);
@@ -42,10 +42,10 @@ public class ZetaFragment extends BaseFragment {
 			}
 		});
 
-		NumberPicker numberPicker = (NumberPicker)v.findViewById(R.id.number_picker);
+		NumberPicker numberPicker = (NumberPicker) v.findViewById(R.id.number_picker);
 		numberPicker.setMinValue(1);
 		numberPicker.setMaxValue(3);
-		numberPicker.setDisplayedValues(new String[] {"1CF", "HT", "OTHER"});
+		numberPicker.setDisplayedValues(new String[]{"1CF", "HT", "OTHER"});
 
 		return v;
 	}

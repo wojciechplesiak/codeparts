@@ -41,6 +41,8 @@
     <color name="notification_pressed">#333333</color>
     <color name="notification_divider">#272727</color>
 
+    <color name="bottom_bar_color">#99000000</color>
+
     <color name="tab1_color">#145061</color>
     <color name="tab2_color">#5B7500</color>
     <color name="tab3_color">#751C5F</color>

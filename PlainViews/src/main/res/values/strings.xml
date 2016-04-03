@@ -1,48 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2007 The Android Open Source Project
 
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
+<resources>
 
-          http://www.apache.org/licenses/LICENSE-2.0
-
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
--->
-
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- -->
-    <!-- Label shown on launcher icon -->
-    <!-- Label for the this application displayed on-screen when this application must be represented to the user. -->
-    <string name="app_label">OCF App 2.0</string>
-
-    <!-- Settings activity name -->
-    <!-- Label for the Settings activity displayed on-screen when that activity must be represented to the user. -->
-    <string name="settings">Settings</string>
-
-
-    <!-- Done button when editing an alarm. -->
     <string name="done">Done</string>
-
-    <!-- Revert button when editing an alarm. -->
     <string name="revert">Revert</string>
-
-    <!-- Delete button when editing an alarm. -->
     <string name="delete">Delete</string>
 
     <!--  ActionBar strings -->
-    <!-- Describes the purpose of the tab button which which switches the activity to the Alarm page -->
-    <string name="menu_alarm">Alarm</string>
-    <!-- Describes the purpose of the tab button which which switches the activity to the Timer page -->
-    <string name="menu_timer">Timer</string>
-    <!-- Describes the purpose of the tab button which which switches the activity to the Clock page -->
-    <string name="menu_clock">Clock</string>
-    <!-- Describes the purpose of the tab button which which switches the activity to the Stopwatch page -->
-    <string name="menu_stopwatch">Stopwatch</string>
     <!-- Menu item on most screens to get to more settings -->
     <string name="menu_item_settings">Settings</string>
     <!-- Menu item on most screens to get to the help information -->

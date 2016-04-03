@@ -28,84 +28,89 @@ import android.view.View;
 
 public class Utils {
 
-    public static void enforceMainLooper() {
-        if (Looper.getMainLooper() != Looper.myLooper()) {
-            throw new IllegalAccessError("May only call from main thread.");
-        }
-    }
+	public static final int[] FRAGMENT_COLORS = new int[]{R.color.tab1_color, R.color
+			.tab2_color, R.color.tab3_color, R.color.tab4_color};
 
-    public static void enforceNotMainLooper() {
-        if (Looper.getMainLooper() == Looper.myLooper()) {
-            throw new IllegalAccessError("May not call from main thread.");
-        }
-    }
+	public static void enforceMainLooper() {
+		if (Looper.getMainLooper() != Looper.myLooper()) {
+			throw new IllegalAccessError("May only call from main thread.");
+		}
+	}
 
-    /**
-     * @return {@code true} if the device is prior to {@link Build.VERSION_CODES#LOLLIPOP}
-     */
-    public static boolean isPreL() {
-        return Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP;
-    }
+	public static void enforceNotMainLooper() {
+		if (Looper.getMainLooper() == Looper.myLooper()) {
+			throw new IllegalAccessError("May not call from main thread.");
+		}
+	}
 
-    /**
-     * @return {@code true} if the device is {@link Build.VERSION_CODES#LOLLIPOP} or
-     *      {@link Build.VERSION_CODES#LOLLIPOP_MR1}
-     */
-    public static boolean isLOrLMR1() {
-        final int sdkInt = Build.VERSION.SDK_INT;
-        return sdkInt == Build.VERSION_CODES.LOLLIPOP || sdkInt == Build.VERSION_CODES.LOLLIPOP_MR1;
-    }
+	/**
+	 * @return {@code true} if the device is prior to {@link Build.VERSION_CODES#LOLLIPOP}
+	 */
+	public static boolean isPreL() {
+		return Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP;
+	}
 
-    /**
-     * @return {@code true} if the device is {@link Build.VERSION_CODES#LOLLIPOP} or later
-     */
-    public static boolean isLOrLater() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
-    }
+	/**
+	 * @return {@code true} if the device is {@link Build.VERSION_CODES#LOLLIPOP} or
+	 * {@link Build.VERSION_CODES#LOLLIPOP_MR1}
+	 */
+	public static boolean isLOrLMR1() {
+		final int sdkInt = Build.VERSION.SDK_INT;
+		return sdkInt == Build.VERSION_CODES.LOLLIPOP || sdkInt == Build.VERSION_CODES
+				.LOLLIPOP_MR1;
+	}
 
-    /**
-     * @return {@code true} if the device is {@link Build.VERSION_CODES#LOLLIPOP_MR1} or later
-     */
-    public static boolean isLMR1OrLater() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1;
-    }
+	/**
+	 * @return {@code true} if the device is {@link Build.VERSION_CODES#LOLLIPOP} or later
+	 */
+	public static boolean isLOrLater() {
+		return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
+	}
 
-    /**
-     * @return {@code true} if the device is {@link Build.VERSION_CODES#M} or later
-     */
-    public static boolean isMOrLater() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
-    }
+	/**
+	 * @return {@code true} if the device is {@link Build.VERSION_CODES#LOLLIPOP_MR1} or later
+	 */
+	public static boolean isLMR1OrLater() {
+		return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1;
+	}
 
-    /**
-     * For screensavers to dim the lights if necessary.
-     */
-    public static void dimClockView(boolean dim, View clockView) {
-        Paint paint = new Paint();
-        paint.setColor(Color.WHITE);
-        paint.setColorFilter(new PorterDuffColorFilter(
-                        (dim ? 0x40FFFFFF : 0xC0FFFFFF),
-                PorterDuff.Mode.MULTIPLY));
-        clockView.setLayerType(View.LAYER_TYPE_HARDWARE, paint);
-    }
+	/**
+	 * @return {@code true} if the device is {@link Build.VERSION_CODES#M} or later
+	 */
+	public static boolean isMOrLater() {
+		return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
+	}
 
-    // ---------------------------------------------------------------------------------------------
-    /**
-     * Returns a color integer associated with a particular resource ID.
-     *
-     * @param context
-     * @param id
-     * @return A single color value in the form 0xAARRGGBB or #Color.BLACK when context is null.
-     * @throws Resources.NotFoundException if the given ID does not exist.
-     */
-    public static int getColor(Context context, int id) throws Resources.NotFoundException {
-        if (context == null) {
-            return Color.BLACK;
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            return context.getResources().getColor(id, context.getTheme());
-        } else {
-            return context.getResources().getColor(id);
-        }
-    }
+	/**
+	 * For screensavers to dim the lights if necessary.
+	 */
+	public static void dimClockView(boolean dim, View clockView) {
+		Paint paint = new Paint();
+		paint.setColor(Color.WHITE);
+		paint.setColorFilter(new PorterDuffColorFilter(
+				(dim ? 0x40FFFFFF : 0xC0FFFFFF),
+				PorterDuff.Mode.MULTIPLY));
+		clockView.setLayerType(View.LAYER_TYPE_HARDWARE, paint);
+	}
+
+	// ---------------------------------------------------------------------------------------------
+
+	/**
+	 * Returns a color integer associated with a particular resource ID.
+	 *
+	 * @param context
+	 * @param id
+	 * @return A single color value in the form 0xAARRGGBB or #Color.BLACK when context is null.
+	 * @throws Resources.NotFoundException if the given ID does not exist.
+	 */
+	public static int getColor(Context context, int id) throws Resources.NotFoundException {
+		if (context == null) {
+			return Color.BLACK;
+		}
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+			return context.getResources().getColor(id, context.getTheme());
+		} else {
+			return context.getResources().getColor(id);
+		}
+	}
 }

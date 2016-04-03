@@ -32,132 +32,130 @@ import android.view.MenuItem;
  */
 public final class SettingsActivity extends BaseActivity {
 
+	public static final String KEY_DEFAULT_NUMBER = "key_default_number";
+	public static final String KEY_SWITCH_ONE = "key_switch_one";
+	public static final String KEY_PROCESS_ID = "key_process_id";
 
-    public static final String KEY_DEFAULT_NUMBER = "key_default_number";
-    public static final String KEY_SWITCH_ONE = "key_switch_one";
-    public static final String KEY_PROCESS_ID = "key_process_id";
+	private PrefsFragment prefsFragment;
 
-    private PrefsFragment prefsFragment;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.settings);
+		setBackgroundColor(Utils.getColor(this, R.color.anthracite), false);
+	}
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.settings);
-        setBackgroundColor(getResources().getColor(R.color.anthracite), false);
-    }
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case android.R.id.home:
+				finish();
+				return true;
+			case R.id.menu_item_default:
+				restoreDefaults();
+				break;
+			default:
+				break;
+		}
+		return super.onOptionsItemSelected(item);
+	}
 
-    @Override
-    public boolean onOptionsItemSelected (MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
-            case R.id.menu_item_default:
-                restoreDefaults();
-                break;
-            default:
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.settings_menu, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
 
-    @Override
-    public boolean onCreateOptionsMenu (Menu menu) {
-        getMenuInflater().inflate(R.menu.settings_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+	private void setPrefsFragment(PrefsFragment prefsFragment) {
+		this.prefsFragment = prefsFragment;
+	}
 
-    private void setPrefsFragment(PrefsFragment prefsFragment) {
-        this.prefsFragment = prefsFragment;
-    }
+	private void restoreDefaults() {
+		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+		sp.edit()
+				.putString(KEY_DEFAULT_NUMBER, getString(R.string.default_phone_number))
+				.putBoolean(KEY_SWITCH_ONE, true)
+				.putString(KEY_PROCESS_ID, getString(R.string.default_process_id))
+				.apply();
+		if (prefsFragment != null) {
+			prefsFragment.recreate();
+		} else {
+			recreate();
+		}
+	}
 
-    private void restoreDefaults() {
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        sp.edit()
-                .putString(KEY_DEFAULT_NUMBER, getString(R.string.default_phone_number))
-                .putBoolean(KEY_SWITCH_ONE, true)
-                .putString(KEY_PROCESS_ID, getString(R.string.default_process_id))
-                .apply();
-        if (prefsFragment != null) {
-            prefsFragment.recreate();
-        } else {
-            recreate();
-        }
-    }
+	public static class PrefsFragment extends PreferenceFragment
+			implements Preference.OnPreferenceChangeListener, Preference
+			.OnPreferenceClickListener {
 
-    public static class PrefsFragment extends PreferenceFragment
-            implements Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
+		private static final int PROCESS_ID_LENGTH = 8;
 
-        private static final int PROCESS_ID_LENGTH = 8;
+		@Override
+		public void onCreate(Bundle savedInstanceState) {
+			super.onCreate(savedInstanceState);
+			addPreferencesFromResource(R.xml.settings);
+			if (getActivity() instanceof SettingsActivity) {
+				((SettingsActivity) getActivity()).setPrefsFragment(this);
+			}
+		}
 
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            addPreferencesFromResource(R.xml.settings);
-            if (getActivity() instanceof SettingsActivity) {
-                ((SettingsActivity) getActivity()).setPrefsFragment(this);
-            }
-        }
+		@Override
+		public void onResume() {
+			super.onResume();
+			getActivity().setResult(RESULT_CANCELED);
+			refresh();
+		}
 
-        @Override
-        public void onResume() {
-            super.onResume();
-            // By default, do not recreate the DeskClock activity
-            getActivity().setResult(RESULT_CANCELED);
-            refresh();
-        }
+		@Override
+		public boolean onPreferenceChange(Preference pref, Object newValue) {
+			switch (pref.getKey()) {
+				case KEY_DEFAULT_NUMBER:
+					pref.setSummary((String) newValue);
+				case KEY_PROCESS_ID:
+					String text = (String) newValue;
+					pref.setSummary(text);
+					if (text.length() != PROCESS_ID_LENGTH) {
+						pref.setIcon(android.R.drawable.stat_sys_warning);
+					} else {
+						pref.setIcon(null);
+					}
+					break;
+				case KEY_SWITCH_ONE:
+					final boolean switchOneEnabled = ((SwitchPreference) pref).isChecked();
+					final Preference processIdPref = findPreference(KEY_PROCESS_ID);
+					processIdPref.setEnabled(!switchOneEnabled);
+					break;
+			}
+			getActivity().setResult(RESULT_OK);
+			return true;
+		}
 
-        @Override
-        public boolean onPreferenceChange(Preference pref, Object newValue) {
-            switch (pref.getKey()) {
-                case KEY_DEFAULT_NUMBER:
-                    pref.setSummary((String) newValue);
-                case KEY_PROCESS_ID:
-                    String text = (String) newValue;
-                    pref.setSummary(text);
-                    if (text.length() != PROCESS_ID_LENGTH) {
-                        pref.setIcon(android.R.drawable.stat_sys_warning);
-                    } else {
-                        pref.setIcon(null);
-                    }
-                    break;
-                case KEY_SWITCH_ONE:
-                    final boolean switchOneEnabled = ((SwitchPreference) pref).isChecked();
-                    final Preference processIdPref = findPreference(KEY_PROCESS_ID);
-                    processIdPref.setEnabled(!switchOneEnabled);
-                    break;
-            }
-            // Set result so DeskClock knows to refresh itself
-            getActivity().setResult(RESULT_OK);
-            return true;
-        }
+		@Override
+		public boolean onPreferenceClick(Preference pref) {
+			return false;
+		}
 
-        @Override
-        public boolean onPreferenceClick(Preference pref) {
-            return false;
-        }
+		private void refresh() {
+			final EditTextPreference defaultNumberPref = (EditTextPreference) findPreference
+					(KEY_DEFAULT_NUMBER);
+			defaultNumberPref.setSummary(defaultNumberPref.getText());
+			defaultNumberPref.setOnPreferenceChangeListener(this);
 
-        private void refresh() {
-            final EditTextPreference defaultNumberPref = (EditTextPreference) findPreference
-                    (KEY_DEFAULT_NUMBER);
-            defaultNumberPref.setSummary(defaultNumberPref.getText());
-            defaultNumberPref.setOnPreferenceChangeListener(this);
+			final Preference switchOnePref = findPreference(KEY_SWITCH_ONE);
+			final boolean switchOneEnabled = ((SwitchPreference) switchOnePref).isChecked();
+			switchOnePref.setOnPreferenceChangeListener(this);
 
-            final Preference switchOnePref = findPreference(KEY_SWITCH_ONE);
-            final boolean switchOneEnabled = ((SwitchPreference) switchOnePref).isChecked();
-            switchOnePref.setOnPreferenceChangeListener(this);
+			final EditTextPreference processIdPref = (EditTextPreference) findPreference
+					(KEY_PROCESS_ID);
+			processIdPref.setEnabled(switchOneEnabled);
+			processIdPref.setSummary(processIdPref.getText());
+			processIdPref.setOnPreferenceChangeListener(this);
+		}
 
-            final EditTextPreference processIdPref = (EditTextPreference) findPreference
-                    (KEY_PROCESS_ID);
-            processIdPref.setEnabled(switchOneEnabled);
-            processIdPref.setSummary(processIdPref.getText());
-            processIdPref.setOnPreferenceChangeListener(this);
-        }
-
-        private void recreate() {
-            getPreferenceScreen().removeAll();
-            addPreferencesFromResource(R.xml.settings);
-            refresh();
-        }
-    }
+		private void recreate() {
+			getPreferenceScreen().removeAll();
+			addPreferencesFromResource(R.xml.settings);
+			refresh();
+		}
+	}
 }
