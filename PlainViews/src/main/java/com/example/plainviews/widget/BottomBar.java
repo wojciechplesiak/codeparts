@@ -43,10 +43,12 @@ public class BottomBar {
 	 */
 	public void initTabsListener() {
 		tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+			private boolean tabSelected;
+
 			@Override
 			public void onTabSelected(TabLayout.Tab tab) {
-//				activity.onBottomBarTabSelected(tab.getPosition());
 				bottomBarDragLayout.onUserInteraction();
+				tabSelected = true;
 			}
 
 			@Override
@@ -56,6 +58,10 @@ public class BottomBar {
 
 			@Override
 			public void onTabReselected(TabLayout.Tab tab) {
+				if (tabSelected) {
+					tabSelected = false;
+					activity.onBottomBarTabSelected(tab.getPosition());
+				}
 				bottomBarDragLayout.onUserInteraction();
 			}
 		});
