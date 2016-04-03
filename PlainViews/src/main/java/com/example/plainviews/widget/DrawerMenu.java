@@ -113,8 +113,8 @@ public class DrawerMenu {
 				R.string.drawer_close) {
 			public void onDrawerClosed(View view) {
 				activity.invalidateOptionsMenu();
-				int color = Utils.getColor(activity, Utils.FRAGMENT_COLORS[drawerList
-						.getCheckedItemPosition()]);
+				int color = Utils.getFragmentColor(activity, drawerList
+						.getCheckedItemPosition());
 				drawerList.setBackgroundColor(color);
 			}
 

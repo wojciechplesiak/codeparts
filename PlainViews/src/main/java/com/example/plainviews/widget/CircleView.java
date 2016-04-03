@@ -1,24 +1,7 @@
-/*
- * Copyright (C) 2015 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.example.plainviews.widget;
 
 import com.example.plainviews.R;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -34,317 +17,317 @@ import android.view.View;
  */
 public class CircleView extends View {
 
-    /**
-     * A Property wrapper around the fillColor functionality handled by the
-     * {@link #setFillColor(int)} and {@link #getFillColor()} methods.
-     */
-    public final static Property<CircleView, Integer> FILL_COLOR =
-            new Property<CircleView, Integer>(Integer.class, "fillColor") {
-        @Override
-        public Integer get(CircleView view) {
-            return view.getFillColor();
-        }
+	/**
+	 * A Property wrapper around the fillColor functionality handled by the
+	 * {@link #setFillColor(int)} and {@link #getFillColor()} methods.
+	 */
+	public final static Property<CircleView, Integer> FILL_COLOR =
+			new Property<CircleView, Integer>(Integer.class, "fillColor") {
+				@Override
+				public Integer get(CircleView view) {
+					return view.getFillColor();
+				}
 
-        @Override
-        public void set(CircleView view, Integer value) {
-            view.setFillColor(value);
-        }
-    };
+				@Override
+				public void set(CircleView view, Integer value) {
+					view.setFillColor(value);
+				}
+			};
 
-    /**
-     * A Property wrapper around the radius functionality handled by the
-     * {@link #setRadius(float)} and {@link #getRadius()} methods.
-     */
-    public final static Property<CircleView, Float> RADIUS =
-            new Property<CircleView, Float>(Float.class, "radius") {
-        @Override
-        public Float get(CircleView view) {
-            return view.getRadius();
-        }
+	/**
+	 * A Property wrapper around the radius functionality handled by the
+	 * {@link #setRadius(float)} and {@link #getRadius()} methods.
+	 */
+	public final static Property<CircleView, Float> RADIUS =
+			new Property<CircleView, Float>(Float.class, "radius") {
+				@Override
+				public Float get(CircleView view) {
+					return view.getRadius();
+				}
 
-        @Override
-        public void set(CircleView view, Float value) {
-            view.setRadius(value);
-        }
-    };
+				@Override
+				public void set(CircleView view, Float value) {
+					view.setRadius(value);
+				}
+			};
+	private static final float HALF = 0.5f;
+	private static final int LTR_LAYOUT_DIRECTION = 0;
 
-    /**
-     * The {@link Paint} used to draw the circle.
-     */
-    private final Paint mCirclePaint = new Paint();
+	/**
+	 * The {@link Paint} used to draw the circle.
+	 */
+	private final Paint circlePaint = new Paint();
 
-    private int mGravity;
-    private float mCenterX;
-    private float mCenterY;
-    private float mRadius;
+	private int gravity;
+	private float centerX;
+	private float centerY;
+	private float radius;
 
-    public CircleView(Context context) {
-        this(context, null /* attrs */);
-    }
+	public CircleView(Context context) {
+		this(context, null /* attrs */);
+	}
 
-    public CircleView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0 /* defStyleAttr */);
-    }
+	public CircleView(Context context, AttributeSet attrs) {
+		this(context, attrs, 0 /* defStyleAttr */);
+	}
 
-    public CircleView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
+	public CircleView(Context context, AttributeSet attrs, int defStyleAttr) {
+		super(context, attrs, defStyleAttr);
 
-        final TypedArray a = context.obtainStyledAttributes(
-                attrs, R.styleable.CircleView, defStyleAttr, 0 /* defStyleRes */);
+		final TypedArray a = context.obtainStyledAttributes(
+				attrs, R.styleable.CircleView, defStyleAttr, 0 /* defStyleRes */);
 
-        mGravity = a.getInt(R.styleable.CircleView_android_gravity, Gravity.NO_GRAVITY);
-        mCenterX = a.getDimension(R.styleable.CircleView_centerX, 0.0f);
-        mCenterY = a.getDimension(R.styleable.CircleView_centerY, 0.0f);
-        mRadius = a.getDimension(R.styleable.CircleView_radius, 0.0f);
+		gravity = a.getInt(R.styleable.CircleView_android_gravity, Gravity.NO_GRAVITY);
+		centerX = a.getDimension(R.styleable.CircleView_centerX, 0.0f);
+		centerY = a.getDimension(R.styleable.CircleView_centerY, 0.0f);
+		radius = a.getDimension(R.styleable.CircleView_radius, 0.0f);
 
-        mCirclePaint.setColor(a.getColor(R.styleable.CircleView_fillColor, Color.WHITE));
+		circlePaint.setColor(a.getColor(R.styleable.CircleView_fillColor, Color.WHITE));
 
-        a.recycle();
-    }
+		a.recycle();
+	}
 
-    @Override
-    public void onRtlPropertiesChanged(int layoutDirection) {
-        super.onRtlPropertiesChanged(layoutDirection);
+	@Override
+	public void onRtlPropertiesChanged(int layoutDirection) {
+		super.onRtlPropertiesChanged(layoutDirection);
 
-        if (mGravity != Gravity.NO_GRAVITY) {
-            applyGravity(mGravity, layoutDirection);
-        }
-    }
+		if (gravity != Gravity.NO_GRAVITY) {
+			applyGravity(gravity);
+		}
+	}
 
-    @Override
-    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        super.onLayout(changed, left, top, right, bottom);
+	@Override
+	protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+		super.onLayout(changed, left, top, right, bottom);
 
-        if (mGravity != Gravity.NO_GRAVITY) {
-            applyGravity(mGravity, getLayoutDirection());
-        }
-    }
+		if (gravity != Gravity.NO_GRAVITY) {
+			applyGravity(gravity);
+		}
+	}
 
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
+	@Override
+	protected void onDraw(Canvas canvas) {
+		super.onDraw(canvas);
 
-        // draw the circle, duh
-        canvas.drawCircle(mCenterX, mCenterY, mRadius, mCirclePaint);
-    }
+		// draw the circle, duh
+		canvas.drawCircle(centerX, centerY, radius, circlePaint);
+	}
 
-    @Override
-    public boolean hasOverlappingRendering() {
-        // only if we have a background, which we shouldn't...
-        return getBackground() != null && getBackground().getCurrent() != null;
-    }
+	@Override
+	public boolean hasOverlappingRendering() {
+		// only if we have a background, which we shouldn't...
+		return getBackground() != null && getBackground().getCurrent() != null;
+	}
 
-    /**
-     * @return the current {@link Gravity} used to align/size the circle
-     */
-    public final int getGravity() {
-        return mGravity;
-    }
+	/**
+	 * @return the current {@link Gravity} used to align/size the circle
+	 */
+	public final int getGravity() {
+		return gravity;
+	}
 
-    /**
-     * Describes how to align/size the circle relative to the view's bounds. Defaults to
-     * {@link Gravity#NO_GRAVITY}.
-     * <p/>
-     * Note: using {@link #setCenterX(float)}, {@link #setCenterY(float)}, or
-     * {@link #setRadius(float)} will automatically clear any conflicting gravity bits.
-     *
-     * @param gravity the {@link Gravity} flags to use
-     * @return this object, allowing calls to methods in this class to be chained
-     */
-    public CircleView setGravity(int gravity) {
-        if (mGravity != gravity) {
-            mGravity = gravity;
+	/**
+	 * Describes how to align/size the circle relative to the view's bounds. Defaults to
+	 * {@link Gravity#NO_GRAVITY}.
+	 * <p/>
+	 * Note: using {@link #setCenterX(float)}, {@link #setCenterY(float)}, or
+	 * {@link #setRadius(float)} will automatically clear any conflicting gravity bits.
+	 *
+	 * @param gravity the {@link Gravity} flags to use
+	 * @return this object, allowing calls to methods in this class to be chained
+	 */
+	public CircleView setGravity(int gravity) {
+		if (this.gravity != gravity) {
+			this.gravity = gravity;
 
-            if (gravity != Gravity.NO_GRAVITY && isLayoutDirectionResolved()) {
-                applyGravity(gravity, getLayoutDirection());
-            }
-        }
-        return this;
-    }
+			if (gravity != Gravity.NO_GRAVITY /*&& isLayoutDirectionResolved()*/) {
+				applyGravity(gravity);
+			}
+		}
+		return this;
+	}
 
-    /**
-     * @return the ARGB color used to fill the circle
-     */
-    public final int getFillColor() {
-        return mCirclePaint.getColor();
-    }
+	/**
+	 * @return the ARGB color used to fill the circle
+	 */
+	public final int getFillColor() {
+		return circlePaint.getColor();
+	}
 
-    /**
-     * Sets the ARGB color used to fill the circle and invalidates only the affected area.
-     *
-     * @param color the ARGB color to use
-     * @return this object, allowing calls to methods in this class to be chained
-     */
-    public CircleView setFillColor(int color) {
-        if (mCirclePaint.getColor() != color) {
-            mCirclePaint.setColor(color);
+	/**
+	 * Sets the ARGB color used to fill the circle and invalidates only the affected area.
+	 *
+	 * @param color the ARGB color to use
+	 * @return this object, allowing calls to methods in this class to be chained
+	 */
+	public CircleView setFillColor(int color) {
+		if (circlePaint.getColor() != color) {
+			circlePaint.setColor(color);
 
-            // invalidate the current area
-            invalidate(mCenterX, mCenterY, mRadius);
-        }
-        return this;
-    }
+			// invalidate the current area
+			invalidate(centerX, centerY, radius);
+		}
+		return this;
+	}
 
-    /**
-     * @return the x-coordinate of the center of the circle
-     */
-    public final float getCenterX() {
-        return mCenterX;
-    }
+	/**
+	 * @return the x-coordinate of the center of the circle
+	 */
+	public final float getCenterX() {
+		return centerX;
+	}
 
-    /**
-     * Sets the x-coordinate for the center of the circle and invalidates only the affected area.
-     *
-     * @param centerX the x-coordinate to use, relative to the view's bounds
-     * @return this object, allowing calls to methods in this class to be chained
-     */
-    public CircleView setCenterX(float centerX) {
-        final float oldCenterX = mCenterX;
-        if (oldCenterX != centerX) {
-            mCenterX = centerX;
+	/**
+	 * Sets the x-coordinate for the center of the circle and invalidates only the affected area.
+	 *
+	 * @param centerX the x-coordinate to use, relative to the view's bounds
+	 * @return this object, allowing calls to methods in this class to be chained
+	 */
+	public CircleView setCenterX(float centerX) {
+		final float oldCenterX = this.centerX;
+		if (oldCenterX != centerX) {
+			this.centerX = centerX;
 
-            // invalidate the old/new areas
-            invalidate(oldCenterX, mCenterY, mRadius);
-            invalidate(centerX, mCenterY, mRadius);
-        }
+			// invalidate the old/new areas
+			invalidate(oldCenterX, centerY, radius);
+			invalidate(centerX, centerY, radius);
+		}
 
-        // clear the horizontal gravity flags
-        mGravity &= ~Gravity.HORIZONTAL_GRAVITY_MASK;
+		// clear the horizontal gravity flags
+		gravity &= ~Gravity.HORIZONTAL_GRAVITY_MASK;
 
-        return this;
-    }
+		return this;
+	}
 
-    /**
-     * @return the y-coordinate of the center of the circle
-     */
-    public final float getCenterY() {
-        return mCenterY;
-    }
+	/**
+	 * @return the y-coordinate of the center of the circle
+	 */
+	public final float getCenterY() {
+		return centerY;
+	}
 
-    /**
-     * Sets the y-coordinate for the center of the circle and invalidates only the affected area.
-     *
-     * @param centerY the y-coordinate to use, relative to the view's bounds
-     * @return this object, allowing calls to methods in this class to be chained
-     */
-    public CircleView setCenterY(float centerY) {
-        final float oldCenterY = mCenterY;
-        if (oldCenterY != centerY) {
-            mCenterY = centerY;
+	/**
+	 * Sets the y-coordinate for the center of the circle and invalidates only the affected area.
+	 *
+	 * @param centerY the y-coordinate to use, relative to the view's bounds
+	 * @return this object, allowing calls to methods in this class to be chained
+	 */
+	public CircleView setCenterY(float centerY) {
+		final float oldCenterY = this.centerY;
+		if (oldCenterY != centerY) {
+			this.centerY = centerY;
 
-            // invalidate the old/new areas
-            invalidate(mCenterX, oldCenterY, mRadius);
-            invalidate(mCenterX, centerY, mRadius);
-        }
+			// invalidate the old/new areas
+			invalidate(centerX, oldCenterY, radius);
+			invalidate(centerX, centerY, radius);
+		}
 
-        // clear the vertical gravity flags
-        mGravity &= ~Gravity.VERTICAL_GRAVITY_MASK;
+		// clear the vertical gravity flags
+		gravity &= ~Gravity.VERTICAL_GRAVITY_MASK;
 
-        return this;
-    }
+		return this;
+	}
 
-    /**
-     * @return the radius of the circle
-     */
-    public final float getRadius() {
-        return mRadius;
-    }
+	/**
+	 * @return the radius of the circle
+	 */
+	public final float getRadius() {
+		return radius;
+	}
 
-    /**
-     * Sets the radius of the circle and invalidates only the affected area.
-     *
-     * @param radius the radius to use
-     * @return this object, allowing calls to methods in this class to be chained
-     */
-    public CircleView setRadius(float radius) {
-        final float oldRadius = mRadius;
-        if (oldRadius != radius) {
-            mRadius = radius;
+	/**
+	 * Sets the radius of the circle and invalidates only the affected area.
+	 *
+	 * @param radius the radius to use
+	 * @return this object, allowing calls to methods in this class to be chained
+	 */
+	public CircleView setRadius(float radius) {
+		final float oldRadius = this.radius;
+		if (oldRadius != radius) {
+			this.radius = radius;
 
-            // invalidate the old/new areas
-            invalidate(mCenterX, mCenterY, oldRadius);
-            if (radius > oldRadius) {
-                invalidate(mCenterX, mCenterY, radius);
-            }
-        }
+			// invalidate the old/new areas
+			invalidate(centerX, centerY, oldRadius);
+			if (radius > oldRadius) {
+				invalidate(centerX, centerY, radius);
+			}
+		}
 
-        // clear the fill gravity flags
-        if ((mGravity & Gravity.FILL_HORIZONTAL) == Gravity.FILL_HORIZONTAL) {
-            mGravity &= ~Gravity.FILL_HORIZONTAL;
-        }
-        if ((mGravity & Gravity.FILL_VERTICAL) == Gravity.FILL_VERTICAL) {
-            mGravity &= ~Gravity.FILL_VERTICAL;
-        }
+		// clear the fill gravity flags
+		if ((gravity & Gravity.FILL_HORIZONTAL) == Gravity.FILL_HORIZONTAL) {
+			gravity &= ~Gravity.FILL_HORIZONTAL;
+		}
+		if ((gravity & Gravity.FILL_VERTICAL) == Gravity.FILL_VERTICAL) {
+			gravity &= ~Gravity.FILL_VERTICAL;
+		}
 
-        return this;
-    }
+		return this;
+	}
 
-    /**
-     * Invalidates the rectangular area that circumscribes the circle defined by {@code centerX},
-     * {@code centerY}, and {@code radius}.
-     */
-    private void invalidate(float centerX, float centerY, float radius) {
-        invalidate((int) (centerX - radius - 0.5f), (int) (centerY - radius - 0.5f),
-                (int) (centerX + radius + 0.5f), (int) (centerY + radius + 0.5f));
-    }
+	/**
+	 * Invalidates the rectangular area that circumscribes the circle defined by {@code centerX},
+	 * {@code centerY}, and {@code radius}.
+	 */
+	private void invalidate(float centerX, float centerY, float radius) {
+		invalidate((int) (centerX - radius - HALF), (int) (centerY - radius - HALF),
+				(int) (centerX + radius + HALF), (int) (centerY + radius + HALF));
+	}
 
-    /**
-     * Applies the specified {@code gravity} and {@code layoutDirection}, adjusting the alignment
-     * and size of the circle depending on the resolved {@link Gravity} flags. Also invalidates the
-     * affected area if necessary.
-     *
-     * @param gravity the {@link Gravity} the {@link Gravity} flags to use
-     * @param layoutDirection the layout direction used to resolve the absolute gravity
-     */
-    @SuppressLint("RtlHardcoded")
-    private void applyGravity(int gravity, int layoutDirection) {
-        final int absoluteGravity = Gravity.getAbsoluteGravity(gravity, layoutDirection);
+	/**
+	 * Applies the specified {@code gravity} and {@code layoutDirection}, adjusting the alignment
+	 * and size of the circle depending on the resolved {@link Gravity} flags. Also invalidates the
+	 * affected area if necessary.
+	 *
+	 * @param gravity the {@link Gravity} the {@link Gravity} flags to use
+	 */
+	private void applyGravity(int gravity) {
+		final int absoluteGravity = Gravity.getAbsoluteGravity(gravity, LTR_LAYOUT_DIRECTION);
 
-        final float oldRadius = mRadius;
-        final float oldCenterX = mCenterX;
-        final float oldCenterY = mCenterY;
+		final float oldRadius = radius;
+		final float oldCenterX = centerX;
+		final float oldCenterY = centerY;
 
-        switch (absoluteGravity & Gravity.HORIZONTAL_GRAVITY_MASK) {
-            case Gravity.LEFT:
-                mCenterX = 0.0f;
-                break;
-            case Gravity.CENTER_HORIZONTAL:
-            case Gravity.FILL_HORIZONTAL:
-                mCenterX = getWidth() / 2.0f;
-                break;
-            case Gravity.RIGHT:
-                mCenterX = getWidth();
-                break;
-        }
+		switch (absoluteGravity & Gravity.HORIZONTAL_GRAVITY_MASK) {
+			case Gravity.LEFT:
+				centerX = 0.0f;
+				break;
+			case Gravity.CENTER_HORIZONTAL:
+			case Gravity.FILL_HORIZONTAL:
+				centerX = getWidth() / 2.0f;
+				break;
+			case Gravity.RIGHT:
+				centerX = getWidth();
+				break;
+		}
 
-        switch (absoluteGravity & Gravity.VERTICAL_GRAVITY_MASK) {
-            case Gravity.TOP:
-                mCenterY = 0.0f;
-                break;
-            case Gravity.CENTER_VERTICAL:
-            case Gravity.FILL_VERTICAL:
-                mCenterY = getHeight() / 2.0f;
-                break;
-            case Gravity.BOTTOM:
-                mCenterY = getHeight();
-                break;
-        }
+		switch (absoluteGravity & Gravity.VERTICAL_GRAVITY_MASK) {
+			case Gravity.TOP:
+				centerY = 0.0f;
+				break;
+			case Gravity.CENTER_VERTICAL:
+			case Gravity.FILL_VERTICAL:
+				centerY = getHeight() / 2.0f;
+				break;
+			case Gravity.BOTTOM:
+				centerY = getHeight();
+				break;
+		}
 
-        switch (absoluteGravity & Gravity.FILL) {
-            case Gravity.FILL:
-                mRadius = Math.min(getWidth(), getHeight()) / 2.0f;
-                break;
-            case Gravity.FILL_HORIZONTAL:
-                mRadius = getWidth() / 2.0f;
-                break;
-            case Gravity.FILL_VERTICAL:
-                mRadius = getHeight() / 2.0f;
-                break;
-        }
+		switch (absoluteGravity & Gravity.FILL) {
+			case Gravity.FILL:
+				radius = Math.min(getWidth(), getHeight()) / 2.0f;
+				break;
+			case Gravity.FILL_HORIZONTAL:
+				radius = getWidth() / 2.0f;
+				break;
+			case Gravity.FILL_VERTICAL:
+				radius = getHeight() / 2.0f;
+				break;
+		}
 
-        if (oldCenterX != mCenterX || oldCenterY != mCenterY || oldRadius != mRadius) {
-            invalidate(oldCenterX, oldCenterY, oldRadius);
-            invalidate(mCenterX, mCenterY, mRadius);
-        }
-    }
+		if (oldCenterX != centerX || oldCenterY != centerY || oldRadius != radius) {
+			invalidate(oldCenterX, oldCenterY, oldRadius);
+			invalidate(centerX, centerY, radius);
+		}
+	}
 }

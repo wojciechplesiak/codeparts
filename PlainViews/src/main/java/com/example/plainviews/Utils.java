@@ -24,12 +24,16 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.os.Build;
 import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 
 public class Utils {
 
+	private static final String TAG = Utils.class.getSimpleName();
+
 	public static final int[] FRAGMENT_COLORS = new int[]{R.color.tab1_color, R.color
-			.tab2_color, R.color.tab3_color, R.color.tab4_color};
+			.tab2_color, R.color.tab3_color, R.color.tab4_color, R.color.tab5_color, R.color
+			.tab6_color, R.color.tab7_color, R.color.tab8_color, R.color.tab9_color};
 
 	public static void enforceMainLooper() {
 		if (Looper.getMainLooper() != Looper.myLooper()) {
@@ -112,5 +116,24 @@ public class Utils {
 		} else {
 			return context.getResources().getColor(id);
 		}
+	}
+
+	/**
+	 * Returns a color integer assigned to fragment at given position.
+	 *
+	 * @param context
+	 * @param position position of a fragment
+	 * @return A single color value in the form 0xAARRGGBB, #Color.BLACK when context is null or
+	 * default color when no color associated with fragment at given position.
+	 */
+
+	public static int getFragmentColor(Context context, int position) {
+		if (position >= 0 && position < FRAGMENT_COLORS.length) {
+			return getColor(context, FRAGMENT_COLORS[position]);
+		}
+
+		Log.d(TAG, "Color for fragment at position " + position + " not defined. Using default " +
+				"color.");
+		return getColor(context, R.color.color_accent);
 	}
 }

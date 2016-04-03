@@ -47,7 +47,7 @@ public class DrawerActivity extends BaseActivity {
 
 		if (savedInstanceState == null) {
 			selectItem(INITIAL_POSITION);
-			int color = Utils.getColor(this, Utils.FRAGMENT_COLORS[INITIAL_POSITION]);
+			int color = Utils.getFragmentColor(this, INITIAL_POSITION);
 			drawerMenu.setBackgroundColor(color);
 		}
 	}
@@ -178,7 +178,7 @@ public class DrawerActivity extends BaseActivity {
 				Toast.makeText(this, "No more fragments to show", Toast.LENGTH_SHORT).show();
 				return;
 		}
-		int color = Utils.getColor(this, Utils.FRAGMENT_COLORS[position]);
+		int color = Utils.getFragmentColor(this, position);
 		setBackgroundColor(color, true);
 		hideBottomBar();
 

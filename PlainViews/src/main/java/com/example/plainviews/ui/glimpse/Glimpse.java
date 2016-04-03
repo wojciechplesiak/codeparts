@@ -15,7 +15,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * A brief, passing information view. Opens with animation and closes automatically after a while.
  * Non-persistent view.
  */
-public class Glimpse {
+public final class Glimpse {
+
 	/**
 	 * @param message
 	 */
@@ -23,7 +24,7 @@ public class Glimpse {
 		return new Builder(context, Variant.ERROR, message);
 	}
 
-	public static class Builder {
+	public final static class Builder {
 
 		private final Context context;
 		private ViewGroup containerView;
@@ -42,7 +43,7 @@ public class Glimpse {
 		}
 
 		/**
-		 *
+		 * Shows a glimpse view created by builder.
 		 */
 		public void show() {
 			AnimatorUtils.createReveal(context, null, variant.getColor(context))
