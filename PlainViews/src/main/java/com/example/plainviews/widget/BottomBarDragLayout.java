@@ -125,12 +125,12 @@ public class BottomBarDragLayout extends RelativeLayout {
 		this(context, attrs, 0);
 	}
 
-	public BottomBarDragLayout(Context context, AttributeSet attrs, int defStyle) {
-		super(context, attrs, defStyle);
+	public BottomBarDragLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+		super(context, attrs, defStyleAttr);
 		dragHelper = ViewDragHelper.create(this, DRAG_SENSITIVITY, new DragHelperCallback());
 
 		final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BottomBarDragLayout,
-				defStyle, 0);
+				defStyleAttr, 0);
 
 		autoDismiss = a.getBoolean(R.styleable.BottomBarDragLayout_autoDismiss, false);
 		dismissAfter = a.getInt(R.styleable.BottomBarDragLayout_dismissAfter,

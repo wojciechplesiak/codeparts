@@ -30,16 +30,29 @@
     </declare-styleable>
 
     <declare-styleable name="BottomBarDragLayout">
-        <!-- Indicates if bottom bar should be automatically dismissed after some delay -->
+        <!-- Indicates if bottom bar should be automatically dismissed after some delay. -->
         <attr name="autoDismiss" format="boolean" />
-        <!-- Sets a delay after which bottom bar will be dismissed. -->
+        <!-- Delay after which bottom bar will be dismissed. -->
         <attr name="dismissAfter" format="integer" />
-        <!-- Sets a velocity threshold which triggers auto expand/collapse-->
+        <!-- Velocity threshold which triggers auto expand/collapse. -->
         <attr name="expandVelocity" format="integer" />
-        <!-- An id of a bottom bar view -->
+        <!-- An id of a bottom bar view. -->
         <attr name="bottomBarId" format="reference" />
-        <!-- Height of a visible part of a bottom bar -->
+        <!-- Height of a visible part of a bottom bar. -->
         <attr name="bottomBarHeight" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="PathView">
+        <!-- Size of the text converted to path. -->
+        <attr name="textSize" format="dimension" />
+        <!-- Path color. -->
+        <attr name="pathColor" format="color" />
+        <!-- Path stroke width. -->
+        <attr name="strokeWidth" format="dimension" />
+        <!-- Path drawing animation duration in ms. -->
+        <attr name="duration" format="integer" />
+        <!-- Fade factor to speed up the alpha animation. -->
+        <attr name="fadeFactor" format="float" />
     </declare-styleable>
 
 </resources>

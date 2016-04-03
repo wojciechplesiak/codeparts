@@ -56,8 +56,6 @@ public class ItemsViewHolder extends RecyclerView.ViewHolder implements View.OnC
 						.setCancelable(true)
 						.build()
 						.start();
-
-//				hideBottomBar(context);
 			}
 		});
 		cardItem.setOnLongClickListener(new View.OnLongClickListener() {

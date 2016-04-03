@@ -46,9 +46,10 @@ public class DrawerActivity extends BaseActivity {
 		title = getTitle();
 
 		if (savedInstanceState == null) {
-			selectItem(INITIAL_POSITION);
+			selectItem(INITIAL_POSITION, false);
 			int color = Utils.getFragmentColor(this, INITIAL_POSITION);
 			drawerMenu.setBackgroundColor(color);
+			bottomBar.show();
 		}
 	}
 
@@ -160,6 +161,10 @@ public class DrawerActivity extends BaseActivity {
 
 	// TODO: (w.plesiak 2016-04-03) refactor this method. Create fragments in some organized way
 	private void selectItem(int position) {
+		selectItem(position, true);
+	}
+
+	private void selectItem(int position, boolean hideBottomBar) {
 		Fragment fragment;
 		switch (position) {
 			case 0:
@@ -180,7 +185,9 @@ public class DrawerActivity extends BaseActivity {
 		}
 		int color = Utils.getFragmentColor(this, position);
 		setBackgroundColor(color, true);
-		hideBottomBar();
+		if (hideBottomBar) {
+			hideBottomBar();
+		}
 
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		fragmentManager.beginTransaction()

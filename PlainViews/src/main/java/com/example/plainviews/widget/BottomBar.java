@@ -75,6 +75,15 @@ public class BottomBar {
 	}
 
 	/**
+	 * Shows bottom bar with animation.
+	 */
+	public void show() {
+		if (bottomBarDragLayout != null) {
+			bottomBarDragLayout.showBottomBar();
+		}
+	}
+
+	/**
 	 * Adds tab to BottomBar's tab layout. Don't forget to call #initTabsListener() when you are
 	 * done
 	 * initializing tabs.

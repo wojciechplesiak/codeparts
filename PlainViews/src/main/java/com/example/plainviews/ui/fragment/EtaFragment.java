@@ -1,7 +1,7 @@
 package com.example.plainviews.ui.fragment;
 
 import com.example.plainviews.R;
-import com.example.plainviews.widget.DullView;
+import com.example.plainviews.widget.PathView;
 import com.example.plainviews.widget.EmptyViewController;
 
 import android.os.Bundle;
@@ -33,11 +33,11 @@ public class EtaFragment extends BaseFragment {
 				.findViewById(R.id.content_frame), v.findViewById(R.id.one_empty_view));
 		emptyViewController.setEmpty(false);
 
-		final DullView dullView = (DullView) v.findViewById(R.id.path_view);
+		final PathView pathView = (PathView) v.findViewById(R.id.path_view);
 		mainLayout.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				dullView.reveal();
+				pathView.reveal();
 			}
 		});
 
