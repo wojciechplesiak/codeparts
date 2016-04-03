@@ -1,22 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
+    <string name="app_label">Debug App</string>
 
-    <string name="done">Done</string>
-    <string name="revert">Revert</string>
-    <string name="delete">Delete</string>
+    <!-- Fragment names -->
+    <string name="tab_zeta">Zeta</string>
+    <string name="tab_eta">Eta</string>
+    <string name="tab_theta">Theta</string>
+    <string name="tab_iota">Iota</string>
 
-    <!--  ActionBar strings -->
-    <!-- Menu item on most screens to get to more settings -->
-    <string name="menu_item_settings">Settings</string>
-    <!-- Menu item on most screens to get to the help information -->
-    <string name="menu_item_help">Help</string>
-    <!-- Menu item on Cities screen to sort by GMT offset -->
-    <string name="menu_item_sort_by_gmt_offset">Sort by time</string>
+    <!-- Settings -->
+    <string name="settings">Settings</string>
+    <string name="settings_category_one_title">Category One</string>
+    <string name="settings_default_number_title">Default number</string>
+    <string name="settings_switch_one_title">New configuration</string>
+    <string name="settings_switch_one_description">When running new version of app, use new configuration.</string>
+    <string name="settings_process_id_title">Process ID</string>
+    <string name="settings_process_id_message">Exactly certain number of characters:</string>
+    <string name="settings_menu_restore_defaults">Restore defaults</string>
+    <string name="default_phone_number">8040</string>
+    <string name="default_process_id">abcdefgh</string>
 
+    <!--Drawer menu -->
+    <string name="drawer_open">Open drawer menu</string>
+    <string name="drawer_close">Close drawer menu</string>
 
-    <!-- String for no alarms -->
+    <string name="dummy_content">DUMMY CONTENT</string>
     <string name="no_content">No Content</string>
-
+    <string name="canceled">Canceled</string>
+    <string name="nothing_to_show">Nothing to show</string>
 </resources>
 

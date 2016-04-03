@@ -6,7 +6,6 @@ import com.example.plainviews.R;
 import com.example.plainviews.ui.glimpse.Glimpse;
 
 import android.content.Context;
-import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.ContextMenu;
 import android.view.View;
@@ -38,14 +37,6 @@ public class ItemsViewHolder extends RecyclerView.ViewHolder implements View.OnC
 		name.setText(item);
 		description.setText("Date and Time: " + System.currentTimeMillis());
 		description.setOnCreateContextMenuListener(this);
-		description.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				PopupMenu popup = new PopupMenu(context, description);
-				popup.inflate(R.menu.cities_menu);
-				popup.show();
-			}
-		});
 		action.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
