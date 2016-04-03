@@ -102,7 +102,7 @@ public class ZetaFragment extends BaseFragment {
 						break;
 					case 2:
 						AnimatorUtils.createReveal(getContext(), sampleViewGroup, Utils.getColor
-								(getContext(), R.color.color_accent))
+								(getContext(), R.color.tab7_color))
 								.fitInContainer(sampleViewGroup)
 								.withText("Inner", "Reveal")
 								.setCancelable(true)

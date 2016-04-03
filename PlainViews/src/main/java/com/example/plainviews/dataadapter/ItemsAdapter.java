@@ -30,14 +30,14 @@ public final class ItemsAdapter extends RecyclerView.Adapter<ItemsViewHolder> {
 	}
 
 	private void addMockItems() {
-		items.add("CAC");
+		items.add("C\nA\nC");
 		items.add("STB");
 		items.add("CAT");
 	}
 
 	@Override
 	public ItemsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-		final View v = inflater.inflate(viewType, parent, false /* attachToRoot */);
+		final View v = inflater.inflate(viewType, parent, false);
 		return new ItemsViewHolder(v);
 	}
 

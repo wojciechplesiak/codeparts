@@ -10,36 +10,54 @@
     <android.support.v7.widget.CardView
         android:id="@+id/card_item"
         android:layout_width="wrap_content"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         card_view:cardBackgroundColor="@color/black_54p"
         card_view:cardCornerRadius="4dp" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginLeft="5dp"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/item_name"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="CAC"/>
+                android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/item_action"
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/item_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/drawer_menu_text_style"
+                        tools:text="CAC"/>
+                </FrameLayout>
+
+                <ImageView
+                    android:id="@+id/item_action"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/ic_menu_dots"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/item_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="right"
-                android:src="@drawable/ic_delete"/>
+                style="@style/label"
+                android:layout_marginBottom="5dp"
+                tools:text="Date and Time"/>
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/item_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            tools:text="Date and Time"/>
+
 
     </android.support.v7.widget.CardView>
 </FrameLayout>
